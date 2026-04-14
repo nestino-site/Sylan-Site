@@ -1,0 +1,15 @@
+{
+  "name": "nestino",
+  "private": true,
+  "scripts": {
+    "dev": "pnpm --filter @nestino/villa-sites dev",
+    "build": "pnpm --filter @nestino/villa-sites build",
+    "start": "pnpm --filter @nestino/villa-sites start",
+    "lint": "pnpm --filter @nestino/villa-sites lint",
+    "verify": "pnpm build && pnpm lint"
+  },
+  "packageManager": "pnpm@9.15.0",
+  "engines": {
+    "node": ">=20"
+  }
+}

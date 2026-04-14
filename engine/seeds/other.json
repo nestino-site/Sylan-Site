@@ -1,0 +1,48 @@
+{
+  "destination": "other",
+  "schema_version": 1,
+  "languages": {
+    "en": {
+      "base_keywords": [
+        "private villa rental",
+        "luxury boutique stay",
+        "villa with private pool",
+        "family villa vacation",
+        "honeymoon villa getaway",
+        "villa near beach",
+        "exclusive use villa",
+        "villa chef service",
+        "best time to visit",
+        "villa vs hotel comparison"
+      ],
+      "base_intents": {
+        "informational": 0.45,
+        "commercial": 0.3,
+        "transactional": 0.15,
+        "comparison": 0.1
+      },
+      "base_content_patterns": {
+        "guide": {
+          "h2_templates": [
+            "Planning your stay at {property_type}",
+            "What guests ask before booking {destination}"
+          ],
+          "faq_question_starters": [
+            "What is included",
+            "How do I get to the property"
+          ]
+        },
+        "location": {
+          "h2_templates": [
+            "Neighborhood overview",
+            "Distances and getting around"
+          ],
+          "faq_question_starters": [
+            "How far to the airport",
+            "Parking and access"
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "destination": "bali",
+  "schema_version": 1,
+  "languages": {
+    "en": {
+      "base_keywords": [
+        "private villa Canggu",
+        "Bali villa honeymoon pool",
+        "luxury villa Seminyak beach",
+        "Ubud villa rice field view",
+        "Bali family villa private pool",
+        "villa Uluwatu cliff",
+        "Sanur villa quiet",
+        "best time visit Bali rainy season",
+        "Canggu vs Seminyak villa stay",
+        "Bali villa with chef",
+        "private pool villa Bali couples",
+        "villa near Finns Beach Club",
+        "Bali long stay villa",
+        "luxury villa Nusa Dua",
+        "Bali wedding villa small group"
+      ],
+      "base_intents": {
+        "informational": 0.4,
+        "commercial": 0.3,
+        "transactional": 0.2,
+        "comparison": 0.1
+      },
+      "base_content_patterns": {
+        "guide": {
+          "h2_templates": [
+            "Best time to visit {area} for a quiet luxury trip",
+            "What to expect from a private villa in Bali",
+            "Day trips and experiences near your villa"
+          ],
+          "faq_question_starters": [
+            "How far is the villa from the beach",
+            "Is the pool private to our group",
+            "Can we arrange a private chef"
+          ]
+        },
+        "location": {
+          "h2_templates": [
+            "The neighborhood in a few minutes",
+            "Beaches and dining nearby"
+          ],
+          "faq_question_starters": [
+            "Distance to Canggu center",
+            "Airport transfer time"
+          ]
+        }
+      },
+      "seasonal_calendar": {
+        "cn": {
+          "peaks": [{ "name": "Golden Week", "approx_months": "early October" }],
+          "notes": "Plan Chinese-language content 6–8 weeks ahead"
+        },
+        "au": {
+          "peaks": [{ "name": "Australian summer holidays", "approx_months": "December–January" }],
+          "notes": "High demand from Australia; align English AU angles"
+        }
+      }
+    },
+    "zh-Hans": {
+      "base_keywords": [
+        "巴厘岛私人别墅",
+        "巴厘岛蜜月别墅泳池",
+        "水明漾豪华别墅",
+        "巴厘岛家庭别墅",
+        "乌布别墅稻田景观",
+        "巴厘岛别墅私人厨师"
+      ],
+      "base_intents": {
+        "informational": 0.35,
+        "commercial": 0.35,
+        "transactional": 0.2,
+        "comparison": 0.1
+      },
+      "base_content_patterns": {
+        "guide": {
+          "h2_templates": [
+            "巴厘岛安静奢华之旅的最佳时间",
+            "私人别墅入住须知"
+          ],
+          "faq_question_starters": [
+            "别墅到海滩多远",
+            "是否适合家庭或团体"
+          ]
+        }
+      },
+      "seasonal_calendar": {
+        "cn": {
+          "peaks": [{ "name": "黄金周", "approx_months": "10月初" }],
+          "notes": "春节与国庆需提前布局内容"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "destination": "europe",
+  "schema_version": 1,
+  "languages": {
+    "en": {
+      "base_keywords": [
+        "Tuscany villa rental pool",
+        "Ibiza luxury villa summer",
+        "Amalfi Coast villa sea view",
+        "Algarve villa golf nearby",
+        "Greece island private villa",
+        "European villa family vacation",
+        "villa with vineyard Tuscany",
+        "best time Tuscany villa holiday"
+      ],
+      "base_intents": {
+        "informational": 0.42,
+        "commercial": 0.28,
+        "transactional": 0.2,
+        "comparison": 0.1
+      },
+      "base_content_patterns": {
+        "guide": {
+          "h2_templates": [
+            "Seasons and crowds in {region}",
+            "Planning a villa-based trip in Europe"
+          ],
+          "faq_question_starters": [
+            "Driving and parking",
+            "Heating and pool season"
+          ]
+        }
+      },
+      "seasonal_calendar": {
+        "eu": {
+          "peaks": [{ "name": "Summer school holidays", "approx_months": "July–August" }],
+          "notes": "Book content for DE/FR/UK source markets"
+        }
+      }
+    },
+    "de": {
+      "base_keywords": [
+        "Luxusvilla Toskana Pool",
+        "Ferienhaus Ibiza privat",
+        "Villa Amalfiküste Meerblick",
+        "Familienvilla Europa Pool"
+      ],
+      "base_intents": {
+        "informational": 0.4,
+        "commercial": 0.3,
+        "transactional": 0.2,
+        "comparison": 0.1
+      },
+      "base_content_patterns": {
+        "guide": {
+          "h2_templates": [
+            "Beste Reisezeit für ruhigen Luxus",
+            "Was Sie vor der Buchung wissen sollten"
+          ],
+          "faq_question_starters": [
+            "Entfernung zum Strand",
+            "Parkplatz und Zufahrt"
+          ]
+        }
+      }
+    }
+  }
+}

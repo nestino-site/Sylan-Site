@@ -1,0 +1,58 @@
+{
+  "destination": "thailand",
+  "schema_version": 1,
+  "languages": {
+    "en": {
+      "base_keywords": [
+        "Phuket private pool villa",
+        "Koh Samui luxury villa beachfront",
+        "Thailand villa honeymoon",
+        "Phuket vs Samui villa stay",
+        "villa with chef Thailand",
+        "family villa Phuket",
+        "best time visit Phuket weather",
+        "Patong villa quiet alternative",
+        "Thailand villa long stay",
+        "boutique villa Krabi"
+      ],
+      "base_intents": {
+        "informational": 0.4,
+        "commercial": 0.3,
+        "transactional": 0.2,
+        "comparison": 0.1
+      },
+      "base_content_patterns": {
+        "guide": {
+          "h2_templates": [
+            "Choosing an area for your Thailand villa stay",
+            "What to know before booking a private villa"
+          ],
+          "faq_question_starters": [
+            "Transfer from airport",
+            "Private pool and staff"
+          ]
+        }
+      }
+    },
+    "zh-Hans": {
+      "base_keywords": [
+        "普吉岛私人别墅",
+        "苏梅岛海景别墅",
+        "泰国蜜月别墅",
+        "普吉岛家庭别墅泳池"
+      ],
+      "base_intents": {
+        "informational": 0.35,
+        "commercial": 0.35,
+        "transactional": 0.2,
+        "comparison": 0.1
+      },
+      "base_content_patterns": {
+        "guide": {
+          "h2_templates": ["泰国别墅区域选择", "入住私人别墅须知"],
+          "faq_question_starters": ["机场接送", "私人泳池"]
+        }
+      }
+    }
+  }
+}

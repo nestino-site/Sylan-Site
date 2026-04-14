@@ -1,0 +1,59 @@
+{
+  "destination": "caribbean",
+  "schema_version": 1,
+  "languages": {
+    "en": {
+      "base_keywords": [
+        "St Barts luxury villa",
+        "Turks and Caicos beachfront villa",
+        "Caribbean private villa pool",
+        "honeymoon villa Caribbean",
+        "family villa Dominican Republic",
+        "best time Caribbean villa weather"
+      ],
+      "base_intents": {
+        "informational": 0.4,
+        "commercial": 0.3,
+        "transactional": 0.2,
+        "comparison": 0.1
+      },
+      "base_content_patterns": {
+        "guide": {
+          "h2_templates": [
+            "Island vibe and what to expect",
+            "Beach access and water activities nearby"
+          ],
+          "faq_question_starters": [
+            "Hurricane season considerations",
+            "Airport transfer"
+          ]
+        }
+      }
+    },
+    "fr": {
+      "base_keywords": [
+        "villa luxe Saint-Barth",
+        "villa piscine privée Caraïbes",
+        "location villa famille Antilles"
+      ],
+      "base_intents": {
+        "informational": 0.4,
+        "commercial": 0.3,
+        "transactional": 0.2,
+        "comparison": 0.1
+      },
+      "base_content_patterns": {
+        "guide": {
+          "h2_templates": [
+            "Calendrier et meilleure période",
+            "Accès plage et services"
+          ],
+          "faq_question_starters": [
+            "Transfert depuis l'aéroport",
+            "Piscine privée"
+          ]
+        }
+      }
+    }
+  }
+}
