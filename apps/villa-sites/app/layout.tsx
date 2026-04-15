@@ -37,8 +37,8 @@ export const metadata: Metadata = {
   title: "Silyan Villas",
   description: "Private villas with pools in the mountains above Antalya.",
   icons: {
-    icon: "/nestino-logo.png",
-    apple: "/nestino-logo.png",
+    icon: "https://www.silyanvillas.com/wp-content/uploads/2024/07/logoweb-e1719838038700.png",
+    apple: "https://www.silyanvillas.com/wp-content/uploads/2024/07/logoweb-e1719838038700.png",
   },
 };
 
