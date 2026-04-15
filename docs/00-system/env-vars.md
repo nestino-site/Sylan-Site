@@ -8,6 +8,8 @@ Canonical list for **`.env.example`** files in each app. Keys marked **browser**
 | `NEXT_PUBLIC_POSTHOG_KEY` | landing, villa-sites, console | browser | PostHog project key |
 | `NEXT_PUBLIC_POSTHOG_HOST` | landing, villa-sites, console | browser | PostHog host (optional) |
 | `RESEND_API_KEY` | landing, villa-sites | yes | Transactional email |
+| `CLOUDINARY_URL` | villa-sites | yes | Cloudinary API URL for image import/upload (server-side only) |
+| `NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME` | villa-sites | browser | Cloudinary cloud name for public delivery URLs |
 | `CRM_WEBHOOK_URL` | landing | yes | Optional lead / CRM webhook |
 | `ENGINE_INTERNAL_URL` | landing, console | yes | FastAPI base URL (server-side calls only) |
 | `ENGINE_INTERNAL_TOKEN` | landing, console, engine | yes | Bearer for engine internal API |

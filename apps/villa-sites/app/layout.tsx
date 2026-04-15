@@ -6,6 +6,7 @@ import { Analytics } from "@vercel/analytics/react";
 
 import { VillaHtmlDirSync } from "@nestino/villa-site/components/villa-html-dir-sync";
 import { isLang, isRtl, htmlLang, type Lang } from "@nestino/villa-site/lib/i18n";
+import { SITE_LOGO } from "@nestino/villa-site/lib/silyan-images";
 import { getSiteBySubdomain } from "@nestino/villa-site/lib/tenant";
 import "./globals.css";
 
@@ -37,8 +38,8 @@ export const metadata: Metadata = {
   title: "Silyan Villas",
   description: "Private villas with pools in the mountains above Antalya.",
   icons: {
-    icon: "https://www.silyanvillas.com/wp-content/uploads/2024/07/logoweb-e1719838038700.png",
-    apple: "https://www.silyanvillas.com/wp-content/uploads/2024/07/logoweb-e1719838038700.png",
+    icon: SITE_LOGO,
+    apple: SITE_LOGO,
   },
 };
 

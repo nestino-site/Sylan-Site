@@ -1,0 +1,2177 @@
+{
+  "generatedAt": "2026-04-15T12:24:02.414Z",
+  "totals": {
+    "staticUrls": 216,
+    "cmsUrls": 0,
+    "allUniqueUrls": 216,
+    "alreadyMapped": 0
+  },
+  "static": [
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00072-1.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00072.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00077.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00079.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00080-1.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00080.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00081.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00082-1.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00082-2.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00082.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00083-1.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00083-2.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00083.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00086-1.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00086-2.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00086.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00087.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00089-1.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00089.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00090.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00091-1.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00091.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00094-1.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00094-2.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00094.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00096-1.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00096-2.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00096.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00097.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00098.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00099-1.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00099-2.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00099.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00107.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00108.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00112.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00115.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00118.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00130.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00132.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00136.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00140.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00142.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00143.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00147.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00148.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00150.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00154.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00157.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00161.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00163.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00165.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00167.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00169.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00183.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00186.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00189.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00191.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00194.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00197.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00201.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00205.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00206.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00208.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00210.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00211.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00216.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00220.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00222.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00227.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00236.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00238.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00240.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00243.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00246.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00248.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00250.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00252.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00253.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00255.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00256.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00259.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00264.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00266.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00270.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00271-1.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00271-2.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00271.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00276.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00277-1.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00277.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00278.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00279.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00280-1.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00280.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00281.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00285.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00286.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00288.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00290.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00294-1.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00294.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00295-1.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00296-1.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00296-2.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00296-3.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00296.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00298.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00299-1.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00299-2.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00299-3.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00299-4.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00299.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00307.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00310-1.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00310-2.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00310-3.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00315.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00324.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00330.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00331.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00333.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00335.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00339.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00343.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00348.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00351.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00367.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00368.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00369.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00374.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00376.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00378.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00379.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00387.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00390.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00393.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00402.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00404.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00409.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00411.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00415.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00416.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00417.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00422.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00425.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00426.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00427.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00428.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00430.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00434.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00436.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00438.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00482.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00488-1.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00494.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00501-1.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00518.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00524.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00545-1.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00550.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00563.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00566.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00573.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00576.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00578.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00580.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00587.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00590.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00592.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00595.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00599.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00602.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00606.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00608.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00612.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00616.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00621.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00629.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00634.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00635.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00636-1.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00636.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00640.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00641.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00646.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00651.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00653.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00654.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00660.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00663.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00665.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00666.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00667.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00671.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00680.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00681.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00686.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/VillaBadem1.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/VillaBadem2.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/VillaDefne.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/VillaIncir-1.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/VillaLimon-1.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/VillaPortakal.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/VillaTurunc-1.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/VillaUzum-1.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/VillaZeytin.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/Villakayisi-1.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/defne2.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/incir1.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/incir2.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/konyaalti.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "site.location",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/logoweb-e1719838038700.png",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "brand.logo",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/villaHurma.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/villaMandalina-1.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/villadefne-2.webp",
+      "source": "packages/villa-site/src/lib/silyan-images.ts",
+      "type": "villa",
+      "mapped": false
+    }
+  ],
+  "cms": {
+    "rows": [],
+    "urls": []
+  },
+  "allUrls": [
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00072-1.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00072.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00077.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00079.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00080-1.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00080.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00081.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00082-1.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00082-2.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00082.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00083-1.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00083-2.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00083.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00086-1.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00086-2.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00086.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00087.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00089-1.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00089.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00090.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00091-1.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00091.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00094-1.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00094-2.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00094.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00096-1.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00096-2.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00096.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00097.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00098.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00099-1.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00099-2.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00099.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00107.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00108.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00112.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00115.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00118.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00130.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00132.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00136.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00140.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00142.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00143.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00147.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00148.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00150.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00154.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00157.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00161.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00163.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00165.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00167.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00169.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00183.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00186.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00189.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00191.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00194.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00197.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00201.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00205.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00206.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00208.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00210.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00211.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00216.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00220.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00222.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00227.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00236.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00238.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00240.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00243.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00246.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00248.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00250.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00252.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00253.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00255.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00256.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00259.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00264.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00266.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00270.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00271-1.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00271-2.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00271.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00276.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00277-1.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00277.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00278.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00279.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00280-1.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00280.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00281.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00285.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00286.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00288.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00290.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00294-1.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00294.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00295-1.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00296-1.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00296-2.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00296-3.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00296.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00298.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00299-1.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00299-2.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00299-3.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00299-4.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00299.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00307.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00310-1.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00310-2.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00310-3.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00315.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00324.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00330.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00331.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00333.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00335.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00339.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00343.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00348.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00351.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00367.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00368.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00369.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00374.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00376.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00378.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00379.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00387.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00390.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00393.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00402.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00404.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00409.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00411.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00415.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00416.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00417.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00422.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00425.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00426.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00427.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00428.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00430.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00434.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00436.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00438.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00482.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00488-1.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00494.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00501-1.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00518.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00524.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00545-1.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00550.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00563.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00566.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00573.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00576.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00578.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00580.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00587.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00590.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00592.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00595.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00599.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00602.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00606.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00608.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00612.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00616.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00621.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00629.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00634.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00635.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00636-1.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00636.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00640.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00641.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00646.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00651.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00653.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00654.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00660.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00663.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00665.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00666.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00667.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00671.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00680.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00681.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/DSC00686.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/VillaBadem1.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/VillaBadem2.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/VillaDefne.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/VillaIncir-1.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/VillaLimon-1.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/VillaPortakal.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/VillaTurunc-1.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/VillaUzum-1.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/VillaZeytin.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/Villakayisi-1.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/defne2.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/incir1.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/incir2.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/konyaalti.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/logoweb-e1719838038700.png",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/villaHurma.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/villaMandalina-1.webp",
+      "mapped": false
+    },
+    {
+      "url": "https://www.silyanvillas.com/wp-content/uploads/2024/07/villadefne-2.webp",
+      "mapped": false
+    }
+  ]
+}

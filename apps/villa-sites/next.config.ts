@@ -39,7 +39,7 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
-        hostname: "**",
+        hostname: "res.cloudinary.com",
       },
     ],
   },

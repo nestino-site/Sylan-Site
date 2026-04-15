@@ -7,14 +7,19 @@
     "dev": "next dev --turbopack --port 3001",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "cloudinary:inventory": "node scripts/cloudinary/inventory.mjs --repo-root \"$PWD\"",
+    "cloudinary:migrate": "node scripts/cloudinary/migrate.mjs --repo-root \"$PWD\" --folder \"silyan/legacy\"",
+    "cloudinary:rewrite:static": "node scripts/cloudinary/rewrite-static-map.mjs --repo-root \"$PWD\"",
+    "cloudinary:rewrite:cms": "node scripts/cloudinary/rewrite-cms-body-json.mjs --repo-root \"$PWD\""
   },
   "dependencies": {
-    "@nestino/villa-site": "workspace:*",
     "@nestino/db": "workspace:*",
+    "@nestino/villa-site": "workspace:*",
     "@upstash/ratelimit": "^2.0.5",
     "@upstash/redis": "^1.34.3",
     "@vercel/analytics": "^1.4.1",
+    "cloudinary": "^2.9.0",
     "drizzle-orm": "^0.38.3",
     "framer-motion": "^11.15.0",
     "next": "^15.1.3",
