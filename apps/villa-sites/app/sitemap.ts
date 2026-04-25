@@ -4,6 +4,8 @@ import { eq, and } from "drizzle-orm";
 import { getDb, isDatabaseConfigured, contentPages, contentVersions } from "@nestino/db";
 import { getSiteBySubdomain, getActiveLangs } from "@nestino/villa-site/lib/tenant";
 
+const STATIC_SEO_PATHS = ["/luxury-villas-in-antalya-private-pool"] as const;
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const h = await headers();
   const slug = h.get("x-nestino-slug") ?? "";
@@ -46,6 +48,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         languages: Object.fromEntries(activeLangs.map((l) => [l, `${base}/${l}/guides`])),
       },
     });
+  }
+
+  for (const lang of activeLangs) {
+    for (const path of STATIC_SEO_PATHS) {
+      entries.push({
+        url: `${base}/${lang}${path}`,
+        lastModified: new Date(),
+        alternates: {
+          languages: Object.fromEntries(activeLangs.map((l) => [l, `${base}/${l}${path}`])),
+        },
+      });
+    }
   }
 
   for (const page of pages) {
