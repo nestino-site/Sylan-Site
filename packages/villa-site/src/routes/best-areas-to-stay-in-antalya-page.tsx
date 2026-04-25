@@ -26,17 +26,22 @@ type Props = {
 type Region = {
   id: string;
   title: string;
+  shortLabel: string;
   summary: string;
   proTip: string;
   localAnchor: string;
   insight: string;
-  alt: string;
-  imagePosition: string;
+  /** Position in the 2×2 reference collage (for caption only). */
+  quadrant: "top-left" | "top-right" | "bottom-left" | "bottom-right";
 };
+
+const REGIONS_COLLAGE_ALT =
+  "Four Antalya area styles: Kalkan hillside villas with sea views, historic Kaş streets, Belek beach and golf, and Antalya city center near Kaleiçi";
 
 const regions: Region[] = [
   {
     id: "kalkan",
+    shortLabel: "Kalkan",
     title: "Exploring Kalkan: A Haven for Secluded Luxury",
     summary:
       "Kalkan is a picturesque town known for its tranquil atmosphere and dramatic coastline. Villas here are often perched on hillsides, giving guests panoramic Mediterranean views and a sense of retreat above the water. The narrow streets are lined with boutique shops and local restaurants, ideal for slow evenings after a pool day.",
@@ -44,11 +49,11 @@ const regions: Region[] = [
     localAnchor: "Kalkan Marina, a short 10-minute drive, is ideal for dining and boat tours.",
     insight:
       "Kalkan rewards travelers who want quiet and views, but its hilly terrain can be challenging for guests with mobility needs. If easy walking is important, choose a villa with direct parking and minimal stairs.",
-    alt: "Luxury villas on Kalkan hillsides overlooking the Mediterranean Sea",
-    imagePosition: "25% 25%",
+    quadrant: "top-left",
   },
   {
     id: "kas",
+    shortLabel: "Kaş",
     title: "Kaş: The Perfect Blend of History and Modern Comfort",
     summary:
       "Kaş combines ancient ruins, a lively harbor, independent shops, and excellent dining. It is especially loved by diving enthusiasts, with local operators running trips to reefs, wrecks, and clear-water coves. For guests who like culture with a relaxed coastal rhythm, Kaş is one of Antalya's most characterful bases.",
@@ -57,11 +62,11 @@ const regions: Region[] = [
       "The town center is usually a short walk from central villas, with easy access to shops and cafes.",
     insight:
       "Kaş can feel lively in peak season, especially on weekends. The charm is real, but light sleepers should look for villas set slightly above or outside the busiest streets.",
-    alt: "Historic streets and coastal villas in Kaş Antalya for luxury stays",
-    imagePosition: "75% 25%",
+    quadrant: "top-right",
   },
   {
     id: "belek",
+    shortLabel: "Belek",
     title: "Belek: Golf Courses and Family-Friendly Villas",
     summary:
       "Belek is known for world-class golf courses, wide resort beaches, and family-friendly villas with larger gardens. It works well for groups who want an easy holiday rhythm: golf in the morning, beach time in the afternoon, and a private pool waiting at home.",
@@ -69,11 +74,11 @@ const regions: Region[] = [
     localAnchor: "Kadriye Beach is a short 15-minute drive and works well for a family day out.",
     insight:
       "Belek is convenient and polished, but it can be busy during school holidays. Plan beach clubs, theme parks, and golf starts early in the day to avoid the heaviest crowds.",
-    alt: "Family-friendly Belek villa with private pool near golf courses and beach",
-    imagePosition: "25% 75%",
+    quadrant: "bottom-left",
   },
   {
     id: "city-center",
+    shortLabel: "Antalya City Center",
     title: "Antalya City Center: Vibrant Life and Easy Beach Access",
     summary:
       "Staying close to Antalya City Center gives you the best of both worlds: restaurants, shopping, Kaleiçi, marina walks, and quick access to beaches such as Konyaaltı and Lara. A villa here is best for travelers who want convenience without giving up private outdoor space.",
@@ -82,8 +87,7 @@ const regions: Region[] = [
       "The city tram offers convenient access to key attractions and can reduce the need for car rentals.",
     insight:
       "The center is naturally more energetic, so noise can be part of the trade-off. In return, you gain easy restaurants, beach access, and less time spent driving.",
-    alt: "Antalya City Center villa near Kaleiçi, marina, and Konyaaltı Beach",
-    imagePosition: "75% 75%",
+    quadrant: "bottom-right",
   },
 ];
 
@@ -347,7 +351,7 @@ export default async function BestAreasToStayInAntalyaPage({
                         Neighborhood chapter
                       </p>
                       <h2 className="mt-2 font-serif text-xl font-semibold text-[var(--color-text-primary)]">
-                        {region.title.split(":")[0]}
+                        {region.shortLabel}
                       </h2>
                       <p className="mt-2 text-sm leading-relaxed text-[var(--color-text-secondary)]">
                         {region.summary.slice(0, 118)}...
@@ -356,28 +360,85 @@ export default async function BestAreasToStayInAntalyaPage({
                   ))}
                 </section>
 
+                <section
+                  className="rounded-3xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5 shadow-[var(--shadow-sm)] md:p-8"
+                  aria-labelledby="four-areas-heading"
+                >
+                  <h2
+                    id="four-areas-heading"
+                    className="font-serif text-h2 font-semibold text-[var(--color-text-primary)]"
+                  >
+                    Four areas, one quick visual
+                  </h2>
+                  <p className="mt-4 max-w-3xl leading-relaxed text-[var(--color-text-secondary)]">
+                    The image below is a single reference collage. Each quadrant captures a different
+                    coastal personality, so you can scan the look and feel first, then read the deeper
+                    notes for each place in the sections that follow.
+                  </p>
+                  <figure className="mt-6">
+                    <div className="relative mx-auto aspect-[4/3] w-full max-w-3xl overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg)]">
+                      <Image
+                        src={REGIONS_COLLAGE_IMAGE}
+                        alt={REGIONS_COLLAGE_ALT}
+                        fill
+                        loading="lazy"
+                        sizes="(max-width: 768px) 100vw, 48rem"
+                        className="object-contain"
+                      />
+                    </div>
+                    <figcaption className="mt-4 text-center text-xs text-[var(--color-text-muted)]">
+                      Top: hillside Kalkan and historic Kaş · Bottom: family-friendly Belek and central
+                      Antalya
+                    </figcaption>
+                    <div className="mt-4 grid max-w-3xl grid-cols-2 gap-3 sm:mx-auto">
+                      {(
+                        [
+                          ["top-left", "Kalkan — secluded, views"],
+                          ["top-right", "Kaş — history, harbor"],
+                          ["bottom-left", "Belek — golf & beach"],
+                          ["bottom-right", "City center — energy & access"],
+                        ] as const
+                      ).map(([key, label]) => {
+                        const r = regions.find((x) => x.quadrant === key);
+                        return (
+                          <div
+                            key={key}
+                            className="rounded-xl border border-[var(--color-border)] bg-[var(--color-bg)] px-3 py-2.5 text-center text-xs font-medium text-[var(--color-text-primary)] sm:text-sm"
+                          >
+                            {r ? (
+                              <a href={`#${r.id}`} className="text-[var(--color-text-primary)] hover:text-[var(--accent-500)]">
+                                {label}
+                              </a>
+                            ) : (
+                              label
+                            )}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </figure>
+                </section>
+
                 {regions.map((region) => (
                   <section
                     key={region.id}
                     id={region.id}
                     className="scroll-mt-24 rounded-3xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5 shadow-[var(--shadow-sm)] md:p-8"
                   >
-                    <h2 className="font-serif text-h2 font-semibold text-[var(--color-text-primary)]">
+                    <p className="text-xs font-semibold uppercase tracking-wider text-[var(--accent-500)]">
+                      {region.shortLabel} ·{" "}
+                      {region.quadrant === "top-left"
+                        ? "Top left"
+                        : region.quadrant === "top-right"
+                          ? "Top right"
+                          : region.quadrant === "bottom-left"
+                            ? "Bottom left"
+                            : "Bottom right"}{" "}
+                      in the reference image above
+                    </p>
+                    <h2 className="mt-2 font-serif text-h2 font-semibold text-[var(--color-text-primary)]">
                       {region.title}
                     </h2>
-                    <figure className="relative mt-6 overflow-hidden rounded-2xl border border-[var(--color-border)]">
-                      <div className="relative aspect-[16/10]">
-                        <Image
-                          src={REGIONS_COLLAGE_IMAGE}
-                          alt={region.alt}
-                          fill
-                          loading="lazy"
-                          sizes="(max-width: 768px) 100vw, 760px"
-                          className="object-cover"
-                          style={{ objectPosition: region.imagePosition }}
-                        />
-                      </div>
-                    </figure>
                     <p className="mt-5 leading-relaxed text-[var(--color-text-secondary)]">
                       {region.summary}
                     </p>
@@ -510,7 +571,7 @@ export default async function BestAreasToStayInAntalyaPage({
                           href={`#${region.id}`}
                           className="text-sm text-[var(--color-text-secondary)] transition hover:text-[var(--accent-500)]"
                         >
-                          {region.title.split(":")[0]}
+                          {region.shortLabel}
                         </a>
                       ))}
                     </div>
