@@ -4,7 +4,10 @@ import { eq, and } from "drizzle-orm";
 import { getDb, isDatabaseConfigured, contentPages, contentVersions } from "@nestino/db";
 import { getSiteBySubdomain, getActiveLangs } from "@nestino/villa-site/lib/tenant";
 
-const STATIC_SEO_PATHS = ["/luxury-villas-in-antalya-private-pool"] as const;
+const STATIC_SEO_PATHS = [
+  "/villas-in-antalya-with-private-pool",
+  "/best-areas-to-stay-in-antalya",
+] as const;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const h = await headers();

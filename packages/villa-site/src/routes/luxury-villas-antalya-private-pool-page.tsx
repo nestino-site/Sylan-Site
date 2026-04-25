@@ -8,7 +8,7 @@ import { resolveRequestOrigin } from "../lib/site-origin";
 import { getActiveLangs, getSiteBySubdomain } from "../lib/tenant";
 import { villaPath } from "../lib/villa-path";
 
-const PAGE_SLUG = "luxury-villas-in-antalya-private-pool";
+const PAGE_SLUG = "villas-in-antalya-with-private-pool";
 const META_TITLE = "Luxury Villas in Antalya with Private Pool | Villa Silyan";
 const META_DESCRIPTION =
   "Luxury Villas in Antalya with Private Pool at Villa Silyan: private infinity pools, gourmet kitchens, concierge service, and direct booking benefits.";
