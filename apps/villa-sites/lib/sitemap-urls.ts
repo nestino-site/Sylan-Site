@@ -7,6 +7,8 @@ import {
   type SiteContext,
 } from "@nestino/villa-site/lib/tenant";
 
+import { getPublicSiteOrigin } from "@/lib/public-site-url";
+
 export type SitemapUrlEntry = { url: string; lastModified?: Date };
 
 const STATIC_SEO_PATHS = [
@@ -57,32 +59,12 @@ function fallbackBaseFromEnv(): string | null {
  */
 export async function collectSitemapUrls(): Promise<SitemapUrlEntry[]> {
   const h = await headers();
-  const forwardedHost = h.get("x-forwarded-host")?.split(",")[0]?.trim();
-  const hostForTenant = forwardedHost || h.get("host")?.trim() || "";
-
-  const forwardedProto = h.get("x-forwarded-proto")?.split(",")[0]?.trim();
-  const protocol =
-    forwardedProto ||
-    (hostForTenant.includes("localhost") || hostForTenant.startsWith("127.0.0.1")
-      ? "http"
-      : "https");
-
-  let base: string;
-  if (hostForTenant) {
-    base = `${protocol}://${hostForTenant}`;
-  } else if (process.env.VERCEL_URL) {
-    const v = process.env.VERCEL_URL.replace(/^https?:\/\//, "");
-    base = `https://${v}`;
-  } else if (process.env.NEXT_PUBLIC_SITE_URL?.trim()) {
-    base = process.env.NEXT_PUBLIC_SITE_URL.trim().replace(/\/$/, "");
-  } else {
-    base = `${protocol}://localhost`;
-  }
+  const { siteUrl: base, hostForTenant } = await getPublicSiteOrigin();
 
   const ctx = await resolveSiteContext(hostForTenant, h.get("x-nestino-slug"));
   const langs = pickLangs(ctx);
 
-  const entries = buildCoreUrls(base, langs);
+  let entries = buildCoreUrls(base, langs);
 
   if (!ctx || !isDatabaseConfigured()) {
     return entries.length > 0 ? entries : coreFromEnvFallback();
@@ -130,4 +112,9 @@ function coreFromEnvFallback(): SitemapUrlEntry[] {
     return [{ url: "https://localhost/en/", lastModified: new Date() }];
   }
   return buildCoreUrls(base, [...FALLBACK_LANGS]);
+}
+
+/** Same URL set as collectSitemapUrls core when request context fails — keeps robots/sitemap consistent. */
+export function buildEmergencyEntriesFromEnv(): SitemapUrlEntry[] {
+  return coreFromEnvFallback();
 }

@@ -1,6 +1,10 @@
 import { NextResponse } from "next/server";
 
-import { collectSitemapUrls, type SitemapUrlEntry } from "@/lib/sitemap-urls";
+import {
+  buildEmergencyEntriesFromEnv,
+  collectSitemapUrls,
+  type SitemapUrlEntry,
+} from "@/lib/sitemap-urls";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -30,7 +34,7 @@ export async function GET() {
   try {
     let entries = await collectSitemapUrls();
     if (entries.length === 0) {
-      entries = await emergencyFallbackEntries();
+      entries = buildEmergencyEntriesFromEnv();
     }
     const xml = buildXml(entries);
     return new NextResponse(xml, {
@@ -42,7 +46,7 @@ export async function GET() {
     });
   } catch (err) {
     console.error("[sitemap.xml GET]", err);
-    const entries = await emergencyFallbackEntries();
+    const entries = buildEmergencyEntriesFromEnv();
     const xml = buildXml(entries);
     return new NextResponse(xml, {
       status: 200,
@@ -52,26 +56,4 @@ export async function GET() {
       },
     });
   }
-}
-
-async function emergencyFallbackEntries(): Promise<SitemapUrlEntry[]> {
-  const base =
-    process.env.NEXT_PUBLIC_SITE_URL?.trim().replace(/\/$/, "") ||
-    (process.env.VERCEL_URL
-      ? `https://${process.env.VERCEL_URL.replace(/^https?:\/\//, "")}`
-      : null);
-
-  const langs = ["en", "tr", "ar", "ru"] as const;
-  const now = new Date();
-
-  if (!base) {
-    return [{ url: "https://localhost/en/", lastModified: now }];
-  }
-
-  const out: SitemapUrlEntry[] = [];
-  for (const lang of langs) {
-    out.push({ url: `${base}/${lang}/`, lastModified: now });
-    out.push({ url: `${base}/${lang}/guides`, lastModified: now });
-  }
-  return out;
 }
