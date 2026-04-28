@@ -35,3 +35,21 @@ export async function getPublicSiteOrigin(): Promise<{
 
   return { siteUrl: `${protocol}://localhost`, hostForTenant: "" };
 }
+
+/**
+ * Request matches the canonical production URL from env (apex vs www ignored).
+ * Used so robots.txt can Allow when DB tenant is missing or status isn't "live" yet,
+ * but the deployment is clearly serving the real domain (fixes GSC "blocked by robots").
+ */
+export function isCanonicalProductionSite(siteUrl: string): boolean {
+  const raw = process.env.NEXT_PUBLIC_SITE_URL?.trim();
+  if (!raw) return false;
+  try {
+    const req = new URL(siteUrl);
+    const canonical = new URL(raw.startsWith("http") ? raw : `https://${raw}`);
+    const norm = (h: string) => h.replace(/^www\./i, "").toLowerCase();
+    return norm(req.hostname) === norm(canonical.hostname);
+  } catch {
+    return false;
+  }
+}
