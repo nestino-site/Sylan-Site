@@ -1,6 +1,20 @@
 import { unstable_cache } from "next/cache";
-import { eq } from "drizzle-orm";
+import { and, eq, isNotNull, or, sql } from "drizzle-orm";
 import { getDb, isDatabaseConfigured, sites, tenants, siteLanguages } from "@nestino/db";
+
+import { resolveSlug } from "./slug";
+
+/** Hostnames to match against `sites.custom_domain` (apex ↔ www). */
+function customDomainLookupVariants(hostname: string): string[] {
+  const h = hostname.toLowerCase();
+  const set = new Set<string>([h]);
+  if (h.startsWith("www.")) {
+    set.add(h.slice(4));
+  } else if (h.includes(".") && h !== "localhost") {
+    set.add(`www.${h}`);
+  }
+  return [...set];
+}
 
 export type SiteLanguageRow = {
   languageCode: string;
@@ -142,6 +156,100 @@ export const getSiteBySubdomain = unstable_cache(
   ["site-by-subdomain"],
   { revalidate: 60, tags: ["sites"] }
 );
+
+/**
+ * Resolves tenant context from the Host header: custom domain first (DB), then
+ * subdomain routing via {@link resolveSlug}. Use when middleware did not set
+ * `x-nestino-slug` (e.g. /robots.txt, /sitemap.xml) or when subdomain slug does
+ * not match DB (`www` vs real tenant).
+ */
+export const getSiteByHost = unstable_cache(
+  async (hostHeader: string): Promise<SiteContext | null> => {
+    const hostname = (hostHeader.split(":")[0] ?? "").toLowerCase();
+    if (!hostname) return null;
+
+    if (isDatabaseConfigured()) {
+      try {
+        const db = getDb();
+        const variants = customDomainLookupVariants(hostname);
+
+        const rows = await db
+          .select({
+            site: {
+              id: sites.id,
+              tenantId: sites.tenantId,
+              subdomain: sites.subdomain,
+              status: sites.status,
+              defaultLanguage: sites.defaultLanguage,
+              theme: sites.theme,
+              accentHex: sites.accentHex,
+              robotsTemplate: sites.robotsTemplate,
+              gscVerificationToken: sites.gscVerificationToken,
+              cmsApiKeyHash: sites.cmsApiKeyHash,
+            },
+            tenant: {
+              id: tenants.id,
+              name: tenants.name,
+              slug: tenants.slug,
+              destination: tenants.destination,
+              locationLabel: tenants.locationLabel,
+              ownerPhone: tenants.ownerPhone,
+              writingStyle: tenants.writingStyle,
+            },
+          })
+          .from(sites)
+          .innerJoin(tenants, eq(sites.tenantId, tenants.id))
+          .where(
+            and(
+              isNotNull(sites.customDomain),
+              or(
+                ...variants.map((v) => sql`lower(${sites.customDomain}) = ${v}`)
+              )
+            )
+          )
+          .limit(1);
+
+        const row = rows[0];
+        if (row) {
+          const langs = await db
+            .select({
+              languageCode: siteLanguages.languageCode,
+              tier: siteLanguages.tier,
+              status: siteLanguages.status,
+            })
+            .from(siteLanguages)
+            .where(eq(siteLanguages.siteId, row.site.id));
+
+          return {
+            site: row.site,
+            tenant: row.tenant,
+            languages: langs,
+          };
+        }
+      } catch {
+        // fall through to subdomain
+      }
+    }
+
+    const slug = resolveSlug(hostHeader);
+    if (!slug) return null;
+    return getSiteBySubdomain(slug);
+  },
+  ["site-by-host"],
+  { revalidate: 60, tags: ["sites"] }
+);
+
+export async function resolveSiteContext(
+  hostHeader: string,
+  headerSlug: string | null
+): Promise<SiteContext | null> {
+  const slug = (headerSlug ?? "").trim();
+  if (slug) {
+    const byHeader = await getSiteBySubdomain(slug);
+    if (byHeader) return byHeader;
+  }
+  return getSiteByHost(hostHeader);
+}
 
 // Returns only languages with status = 'active'
 export function getActiveLangs(ctx: SiteContext): string[] {

@@ -1,13 +1,11 @@
 import type { MetadataRoute } from "next";
 import { headers } from "next/headers";
-import { resolveSlug } from "@nestino/villa-site/lib/slug";
-import { getSiteBySubdomain } from "@nestino/villa-site/lib/tenant";
+import { resolveSiteContext } from "@nestino/villa-site/lib/tenant";
 
 export default async function robots(): Promise<MetadataRoute.Robots> {
   const h = await headers();
   const host = h.get("host") ?? "";
-  const slug = h.get("x-nestino-slug") || resolveSlug(host) || "";
-  const ctx = slug ? await getSiteBySubdomain(slug) : null;
+  const ctx = await resolveSiteContext(host, h.get("x-nestino-slug"));
   const protocol = host.includes("localhost") ? "http" : "https";
   const siteUrl = `${protocol}://${host}`;
 

@@ -2,8 +2,7 @@ import type { MetadataRoute } from "next";
 import { headers } from "next/headers";
 import { eq, and, asc } from "drizzle-orm";
 import { getDb, isDatabaseConfigured, contentPages, contentVersions } from "@nestino/db";
-import { getSiteBySubdomain, getActiveLangs } from "@nestino/villa-site/lib/tenant";
-import { resolveSlug } from "@nestino/villa-site/lib/slug";
+import { resolveSiteContext, getActiveLangs } from "@nestino/villa-site/lib/tenant";
 
 const STATIC_SEO_PATHS = [
   "/villas-in-antalya-with-private-pool",
@@ -14,11 +13,10 @@ const STATIC_SEO_PATHS = [
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const h = await headers();
   const host = h.get("host") ?? "";
-  const slug = h.get("x-nestino-slug") || resolveSlug(host) || "";
   const protocol = host.includes("localhost") ? "http" : "https";
   const base = `${protocol}://${host}`;
 
-  const ctx = slug ? await getSiteBySubdomain(slug) : null;
+  const ctx = await resolveSiteContext(host, h.get("x-nestino-slug"));
   if (!ctx || !isDatabaseConfigured()) return [];
 
   const activeLangs = getActiveLangs(ctx);
