@@ -1,4 +1,3 @@
-import type { MetadataRoute } from "next";
 import { headers } from "next/headers";
 import { eq, and, asc } from "drizzle-orm";
 import { getDb, isDatabaseConfigured, contentPages, contentVersions } from "@nestino/db";
@@ -8,8 +7,7 @@ import {
   type SiteContext,
 } from "@nestino/villa-site/lib/tenant";
 
-/** Per-request generation so Host / forwarded headers are correct. */
-export const dynamic = "force-dynamic";
+export type SitemapUrlEntry = { url: string; lastModified?: Date };
 
 const STATIC_SEO_PATHS = [
   "/villas-in-antalya-with-private-pool",
@@ -25,34 +23,39 @@ function pickLangs(ctx: SiteContext | null): string[] {
   return fromDb.length > 0 ? fromDb : [...FALLBACK_LANGS];
 }
 
-function buildCoreEntries(base: string, langs: string[]): MetadataRoute.Sitemap {
-  const entries: MetadataRoute.Sitemap = [];
+function buildCoreUrls(base: string, langs: string[]): SitemapUrlEntry[] {
+  const entries: SitemapUrlEntry[] = [];
   const now = new Date();
 
   for (const lang of langs) {
-    entries.push({
-      url: `${base}/${lang}/`,
-      lastModified: now,
-    });
-    entries.push({
-      url: `${base}/${lang}/guides`,
-      lastModified: now,
-    });
+    entries.push({ url: `${base}/${lang}/`, lastModified: now });
+    entries.push({ url: `${base}/${lang}/guides`, lastModified: now });
   }
 
   for (const lang of langs) {
     for (const path of STATIC_SEO_PATHS) {
-      entries.push({
-        url: `${base}/${lang}${path}`,
-        lastModified: now,
-      });
+      entries.push({ url: `${base}/${lang}${path}`, lastModified: now });
     }
   }
 
   return entries;
 }
 
-async function buildSitemap(): Promise<MetadataRoute.Sitemap> {
+function fallbackBaseFromEnv(): string | null {
+  const fromEnv = process.env.NEXT_PUBLIC_SITE_URL?.trim().replace(/\/$/, "");
+  if (fromEnv) return fromEnv;
+  if (process.env.VERCEL_URL) {
+    return `https://${process.env.VERCEL_URL.replace(/^https?:\/\//, "")}`;
+  }
+  return null;
+}
+
+/**
+ * Collects all URLs for /sitemap.xml. Used by the Route Handler (not MetadataRoute)
+ * so Vercel always receives real XML with entries — Next's built-in sitemap serializer
+ * has produced empty urlsets for some deployments.
+ */
+export async function collectSitemapUrls(): Promise<SitemapUrlEntry[]> {
   const h = await headers();
   const forwardedHost = h.get("x-forwarded-host")?.split(",")[0]?.trim();
   const hostForTenant = forwardedHost || h.get("host")?.trim() || "";
@@ -79,10 +82,10 @@ async function buildSitemap(): Promise<MetadataRoute.Sitemap> {
   const ctx = await resolveSiteContext(hostForTenant, h.get("x-nestino-slug"));
   const langs = pickLangs(ctx);
 
-  let entries = buildCoreEntries(base, langs);
+  let entries = buildCoreUrls(base, langs);
 
   if (!ctx || !isDatabaseConfigured()) {
-    return entries;
+    return entries.length > 0 ? entries : coreFromEnvFallback();
   }
 
   try {
@@ -115,25 +118,16 @@ async function buildSitemap(): Promise<MetadataRoute.Sitemap> {
       }
     }
   } catch {
-    // keep core entries
+    // keep core urls
   }
 
-  return entries;
+  return entries.length > 0 ? entries : coreFromEnvFallback();
 }
 
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  try {
-    return await buildSitemap();
-  } catch (err) {
-    console.error("[sitemap]", err);
-    const base =
-      process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
-      (process.env.VERCEL_URL
-        ? `https://${process.env.VERCEL_URL.replace(/^https?:\/\//, "")}`
-        : null);
-    if (!base) {
-      return [];
-    }
-    return buildCoreEntries(base, [...FALLBACK_LANGS]);
+function coreFromEnvFallback(): SitemapUrlEntry[] {
+  const base = fallbackBaseFromEnv();
+  if (!base) {
+    return [{ url: "https://localhost/en/", lastModified: new Date() }];
   }
+  return buildCoreUrls(base, [...FALLBACK_LANGS]);
 }
