@@ -8,13 +8,15 @@ import {
   type SiteContext,
 } from "@nestino/villa-site/lib/tenant";
 
+/** Per-request generation so Host / forwarded headers are correct. */
+export const dynamic = "force-dynamic";
+
 const STATIC_SEO_PATHS = [
   "/villas-in-antalya-with-private-pool",
   "/best-areas-to-stay-in-antalya",
   "/private-family-villas-in-antalya",
 ] as const;
 
-/** When DB is offline or site_languages is empty — matches typical Silyan deploy. */
 const FALLBACK_LANGS = ["en", "tr", "ar", "ru"] as const;
 
 function pickLangs(ctx: SiteContext | null): string[] {
@@ -23,7 +25,6 @@ function pickLangs(ctx: SiteContext | null): string[] {
   return fromDb.length > 0 ? fromDb : [...FALLBACK_LANGS];
 }
 
-/** Core URLs every villa site should expose (home, guides, static SEO paths). */
 function buildCoreEntries(base: string, langs: string[]): MetadataRoute.Sitemap {
   const entries: MetadataRoute.Sitemap = [];
   const now = new Date();
@@ -32,16 +33,10 @@ function buildCoreEntries(base: string, langs: string[]): MetadataRoute.Sitemap 
     entries.push({
       url: `${base}/${lang}/`,
       lastModified: now,
-      alternates: {
-        languages: Object.fromEntries(langs.map((l) => [l, `${base}/${l}/`])),
-      },
     });
     entries.push({
       url: `${base}/${lang}/guides`,
       lastModified: now,
-      alternates: {
-        languages: Object.fromEntries(langs.map((l) => [l, `${base}/${l}/guides`])),
-      },
     });
   }
 
@@ -50,9 +45,6 @@ function buildCoreEntries(base: string, langs: string[]): MetadataRoute.Sitemap 
       entries.push({
         url: `${base}/${lang}${path}`,
         lastModified: now,
-        alternates: {
-          languages: Object.fromEntries(langs.map((l) => [l, `${base}/${l}${path}`])),
-        },
       });
     }
   }
@@ -60,13 +52,31 @@ function buildCoreEntries(base: string, langs: string[]): MetadataRoute.Sitemap 
   return entries;
 }
 
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+async function buildSitemap(): Promise<MetadataRoute.Sitemap> {
   const h = await headers();
-  const host = h.get("host") ?? "";
-  const protocol = host.includes("localhost") ? "http" : "https";
-  const base = `${protocol}://${host}`;
+  const forwardedHost = h.get("x-forwarded-host")?.split(",")[0]?.trim();
+  const hostForTenant = forwardedHost || h.get("host")?.trim() || "";
 
-  const ctx = await resolveSiteContext(host, h.get("x-nestino-slug"));
+  const forwardedProto = h.get("x-forwarded-proto")?.split(",")[0]?.trim();
+  const protocol =
+    forwardedProto ||
+    (hostForTenant.includes("localhost") || hostForTenant.startsWith("127.0.0.1")
+      ? "http"
+      : "https");
+
+  let base: string;
+  if (hostForTenant) {
+    base = `${protocol}://${hostForTenant}`;
+  } else if (process.env.VERCEL_URL) {
+    const v = process.env.VERCEL_URL.replace(/^https?:\/\//, "");
+    base = `https://${v}`;
+  } else if (process.env.NEXT_PUBLIC_SITE_URL?.trim()) {
+    base = process.env.NEXT_PUBLIC_SITE_URL.trim().replace(/\/$/, "");
+  } else {
+    base = `${protocol}://localhost`;
+  }
+
+  const ctx = await resolveSiteContext(hostForTenant, h.get("x-nestino-slug"));
   const langs = pickLangs(ctx);
 
   let entries = buildCoreEntries(base, langs);
@@ -101,17 +111,29 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         entries.push({
           url: `${base}/${lang}${pagePath}`,
           lastModified: page.publishedAt ?? new Date(),
-          alternates: {
-            languages: Object.fromEntries(
-              langs.map((l) => [l, `${base}/${l}${pagePath}`])
-            ),
-          },
         });
       }
     }
   } catch {
-    // DB errors — keep core entries only
+    // keep core entries
   }
 
   return entries;
+}
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  try {
+    return await buildSitemap();
+  } catch (err) {
+    console.error("[sitemap]", err);
+    const base =
+      process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
+      (process.env.VERCEL_URL
+        ? `https://${process.env.VERCEL_URL.replace(/^https?:\/\//, "")}`
+        : null);
+    if (!base) {
+      return [];
+    }
+    return buildCoreEntries(base, [...FALLBACK_LANGS]);
+  }
 }

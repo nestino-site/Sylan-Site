@@ -166,9 +166,8 @@ export const getSiteBySubdomain = unstable_cache(
 export const getSiteByHost = unstable_cache(
   async (hostHeader: string): Promise<SiteContext | null> => {
     const hostname = (hostHeader.split(":")[0] ?? "").toLowerCase();
-    if (!hostname) return null;
 
-    if (isDatabaseConfigured()) {
+    if (hostname && isDatabaseConfigured()) {
       try {
         const db = getDb();
         const variants = customDomainLookupVariants(hostname);
@@ -232,7 +231,6 @@ export const getSiteByHost = unstable_cache(
     }
 
     const slug = resolveSlug(hostHeader);
-    if (!slug) return null;
     return getSiteBySubdomain(slug);
   },
   ["site-by-host"],
