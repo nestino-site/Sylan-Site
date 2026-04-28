@@ -7,6 +7,7 @@ import { getSiteBySubdomain, getActiveLangs } from "@nestino/villa-site/lib/tena
 const STATIC_SEO_PATHS = [
   "/villas-in-antalya-with-private-pool",
   "/best-areas-to-stay-in-antalya",
+  "/private-family-villas-in-antalya",
 ] as const;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
