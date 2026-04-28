@@ -82,7 +82,7 @@ export async function collectSitemapUrls(): Promise<SitemapUrlEntry[]> {
   const ctx = await resolveSiteContext(hostForTenant, h.get("x-nestino-slug"));
   const langs = pickLangs(ctx);
 
-  let entries = buildCoreUrls(base, langs);
+  const entries = buildCoreUrls(base, langs);
 
   if (!ctx || !isDatabaseConfigured()) {
     return entries.length > 0 ? entries : coreFromEnvFallback();
