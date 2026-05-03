@@ -11,8 +11,6 @@ export default async function robots(): Promise<MetadataRoute.Robots> {
   const { siteUrl, hostForTenant } = await getPublicSiteOrigin();
   const ctx = await resolveSiteContext(hostForTenant, h.get("x-nestino-slug"));
 
-  const hostLabel = siteUrl.replace(/^https?:\/\//, "");
-
   const tenantLive = ctx?.site.status === "live";
   const envForce =
     process.env.NEXT_PUBLIC_ROBOTS_ALLOW_INDEX === "true" ||
@@ -35,7 +33,6 @@ export default async function robots(): Promise<MetadataRoute.Robots> {
     return {
       rules: { userAgent: "*", allow: "/" },
       sitemap: sitemapAbsolute,
-      host: hostLabel,
     };
   }
 
@@ -49,6 +46,5 @@ export default async function robots(): Promise<MetadataRoute.Robots> {
       { userAgent: "Google-Extended", allow: "/" },
     ],
     sitemap: sitemapAbsolute,
-    host: hostLabel,
   };
 }
