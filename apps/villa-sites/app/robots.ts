@@ -4,6 +4,8 @@ import { resolveSiteContext } from "@nestino/villa-site/lib/tenant";
 
 import { getPublicSiteOrigin, isCanonicalProductionSite } from "@/lib/public-site-url";
 
+export const dynamic = "force-dynamic";
+
 export default async function robots(): Promise<MetadataRoute.Robots> {
   const h = await headers();
   const { siteUrl, hostForTenant } = await getPublicSiteOrigin();
