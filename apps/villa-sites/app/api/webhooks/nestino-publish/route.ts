@@ -3,6 +3,11 @@ import { revalidatePath, revalidateTag } from "next/cache";
 import { NextResponse } from "next/server";
 import { Redis } from "@upstash/redis";
 import { z } from "zod";
+import {
+  fetchPublishedByPageId,
+  normalizeSlug,
+  upsertPublishedRecord,
+} from "@/lib/nestino-published-content";
 
 export const runtime = "nodejs";
 
@@ -66,11 +71,6 @@ function isTimestampFresh(tsHeader: string | null): boolean {
   return Math.abs(Date.now() - ts) <= MAX_SKEW_MS;
 }
 
-function normalizeSlug(slug: string): string {
-  const cleaned = slug.trim().replace(/^\/+/, "").replace(/\/+$/, "");
-  return cleaned || "";
-}
-
 async function claimIdempotencyKey(key: string): Promise<boolean> {
   const redis = getRedisClient();
   if (redis) {
@@ -92,31 +92,16 @@ async function claimIdempotencyKey(key: string): Promise<boolean> {
   return true;
 }
 
-async function fetchPublishedContent(apiBaseUrl: string, pageId: string): Promise<boolean> {
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 4000);
-
-  try {
-    const response = await fetch(`${apiBaseUrl}/api/v1/content/${pageId}`, {
-      method: "GET",
-      signal: controller.signal,
-      cache: "no-store",
-    });
-    return response.ok;
-  } finally {
-    clearTimeout(timeout);
-  }
-}
-
-function revalidateForSlug(slug: string) {
+function revalidateForSlug(slug: string, language: string | null) {
   revalidateTag("content");
   if (!slug) return;
 
-  revalidatePath(`/${slug}`);
-  revalidatePath(`/en/${slug}`);
-  revalidatePath(`/tr/${slug}`);
+  if (language) {
+    revalidatePath(`/${language}/${slug}`);
+  }
+  revalidatePath(`/en/${slug}`); // middleware canonical/fallback
   revalidatePath(`/ar/${slug}`);
-  revalidatePath(`/ru/${slug}`);
+  revalidatePath(`/${slug}`); // host rewrite fallback
 }
 
 export async function POST(request: Request) {
@@ -176,14 +161,37 @@ export async function POST(request: Request) {
   }
 
   const slug = normalizeSlug(parsedPayload.slug);
-  const contentFetchOk = await fetchPublishedContent(env.apiBaseUrl, parsedPayload.pageId).catch(() => false);
-  revalidateForSlug(slug);
+  let contentFetchOk = false;
+  let upserted = false;
+  let language: string | null = null;
+
+  try {
+    const record = await fetchPublishedByPageId(env.apiBaseUrl, parsedPayload.pageId);
+    if (record && record.siteId === env.siteId) {
+      await upsertPublishedRecord(record);
+      language = record.language;
+      contentFetchOk = true;
+      upserted = true;
+    } else if (record && record.siteId !== env.siteId) {
+      console.warn("[nestino-publish-webhook] fetched content site mismatch", {
+        expectedSiteId: env.siteId,
+        fetchedSiteId: record.siteId,
+        pageId: parsedPayload.pageId,
+      });
+    }
+  } catch {
+    contentFetchOk = false;
+  }
+
+  revalidateForSlug(slug, language);
 
   console.info("[nestino-publish-webhook] processed", {
     event: parsedPayload.event,
     pageId: parsedPayload.pageId,
     slug,
+    language,
     contentFetchOk,
+    upserted,
     result: "ok",
   });
 
@@ -192,6 +200,8 @@ export async function POST(request: Request) {
     event: parsedPayload.event,
     pageId: parsedPayload.pageId,
     slug,
+    language,
     contentFetchOk,
+    upserted,
   });
 }
