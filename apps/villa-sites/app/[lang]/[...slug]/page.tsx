@@ -1,19 +1,41 @@
 import type { Metadata } from "next";
 import { cache } from "react";
+import sanitizeHtml from "sanitize-html";
 import { headers } from "next/headers";
 import { notFound } from "next/navigation";
 import { getSiteBySubdomain } from "@nestino/villa-site/lib/tenant";
 import {
   effectiveSiteIdForPublishedContent,
-  fetchPublishedBySlug,
   getPublishedRecordBySlug,
   normalizeSlug,
-  upsertPublishedRecord,
   type SupportedPublishedLang,
 } from "@/lib/nestino-published-content";
 
 export const revalidate = 60;
 export const runtime = "nodejs";
+
+/** Safe subset for Nestino-provided HTML (defense in depth). */
+const SANITIZE_OPTS: sanitizeHtml.IOptions = {
+  allowedTags: sanitizeHtml.defaults.allowedTags.concat([
+    "img",
+    "h1",
+    "h2",
+    "h3",
+    "h4",
+    "figure",
+    "figcaption",
+    "article",
+    "section",
+  ]),
+  allowedAttributes: {
+    ...sanitizeHtml.defaults.allowedAttributes,
+    img: ["src", "alt", "width", "height", "loading", "class"],
+    a: ["href", "name", "target", "rel", "class"],
+    p: ["class"],
+    div: ["class"],
+    span: ["class"],
+  },
+};
 
 type Props = {
   params: Promise<{ lang: string; slug: string[] }>;
@@ -44,34 +66,20 @@ async function resolveContext(props: Props) {
   };
 }
 
-const resolvePublishedRecord = cache(async function resolvePublishedRecord(
+/** Published pages are loaded from the store populated by the Nestino webhook (no unverified slug-query APIs). */
+const loadPublishedRecord = cache(async function loadPublishedRecord(
   siteId: string,
   lang: SupportedPublishedLang,
   slug: string
 ) {
-  const fromStore = await getPublishedRecordBySlug(siteId, lang, slug);
-  if (fromStore) return fromStore;
-
-  const baseUrl = process.env.NESTINO_API_BASE_URL?.replace(/\/$/, "");
-  if (!baseUrl) return null;
-
-  const fromBackend = await fetchPublishedBySlug(baseUrl, slug, lang);
-  if (!fromBackend) return null;
-  if (fromBackend.siteId !== siteId) return null;
-
-  await upsertPublishedRecord(fromBackend);
-  return fromBackend;
+  return getPublishedRecordBySlug(siteId, lang, slug);
 });
 
 export async function generateMetadata(props: Props): Promise<Metadata> {
   const resolved = await resolveContext(props);
   if (!resolved) return { robots: { index: false, follow: false } };
 
-  const record = await resolvePublishedRecord(
-    resolved.siteId,
-    resolved.safeLang,
-    resolved.slugValue
-  );
+  const record = await loadPublishedRecord(resolved.siteId, resolved.safeLang, resolved.slugValue);
   if (!record) return { robots: { index: false, follow: false } };
 
   const canonical = `/${resolved.safeLang}/${resolved.slugValue}`;
@@ -87,12 +95,10 @@ export default async function Page(props: Props) {
   const resolved = await resolveContext(props);
   if (!resolved) notFound();
 
-  const record = await resolvePublishedRecord(
-    resolved.siteId,
-    resolved.safeLang,
-    resolved.slugValue
-  );
+  const record = await loadPublishedRecord(resolved.siteId, resolved.safeLang, resolved.slugValue);
   if (!record || record.status.toLowerCase() !== "published") notFound();
+
+  const safeHtml = sanitizeHtml(record.finalContent, SANITIZE_OPTS);
 
   return (
     <main className="pt-24 pb-16 section-y">
@@ -101,11 +107,19 @@ export default async function Page(props: Props) {
           <h1 className="font-serif font-semibold text-h1 text-[var(--color-text-primary)]">
             {record.title}
           </h1>
+          {record.publishedAt && (
+            <p className="text-sm text-[var(--color-text-muted)] mt-2">
+              <time dateTime={record.publishedAt}>
+                {new Intl.DateTimeFormat(resolved.safeLang, {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                }).format(new Date(record.publishedAt))}
+              </time>
+            </p>
+          )}
         </header>
-        <section
-          className="prose-villa"
-          dangerouslySetInnerHTML={{ __html: record.finalContent }}
-        />
+        <section className="prose-villa" dangerouslySetInnerHTML={{ __html: safeHtml }} />
       </article>
     </main>
   );

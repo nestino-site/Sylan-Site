@@ -4,7 +4,8 @@ import { NextResponse } from "next/server";
 import { Redis } from "@upstash/redis";
 import { z } from "zod";
 import {
-  fetchPublishedByPageId,
+  fetchPublishedPageRecord,
+  isPersistentStoreConfigured,
   normalizeSlug,
   upsertPublishedRecord,
 } from "@/lib/nestino-published-content";
@@ -26,6 +27,10 @@ type PublishPayload = z.infer<typeof PublishPayloadSchema>;
 
 let redisClient: Redis | null | undefined;
 const inMemoryDedupe = new Map<string, number>();
+
+function jsonError(code: string, message: string, status: number) {
+  return NextResponse.json({ error: { code, message } }, { status });
+}
 
 function getRedisClient(): Redis | null {
   if (redisClient !== undefined) return redisClient;
@@ -99,16 +104,20 @@ function revalidateForSlug(slug: string, language: string | null) {
   if (language) {
     revalidatePath(`/${language}/${slug}`);
   }
-  revalidatePath(`/en/${slug}`); // middleware canonical/fallback
+  revalidatePath(`/en/${slug}`);
   revalidatePath(`/ar/${slug}`);
-  revalidatePath(`/${slug}`); // host rewrite fallback
+  revalidatePath(`/${slug}`);
 }
 
 export async function POST(request: Request) {
   const env = getRequiredEnv();
   if (!env) {
     console.error("[nestino-publish-webhook] missing required env vars");
-    return new NextResponse("Server misconfigured", { status: 500 });
+    return jsonError(
+      "misconfigured",
+      "Missing NESTINO_PUBLISH_SECRET, NESTINO_SITE_ID, or NESTINO_API_BASE_URL",
+      503
+    );
   }
 
   const rawBody = await request.text();
@@ -117,19 +126,19 @@ export async function POST(request: Request) {
 
   if (!verifySignature(rawBody, signature, env.publishSecret)) {
     console.warn("[nestino-publish-webhook] invalid signature");
-    return new NextResponse("Invalid signature", { status: 401 });
+    return jsonError("invalid_signature", "X-Publish-Signature does not match HMAC of raw body", 401);
   }
 
   if (!isTimestampFresh(timestampHeader)) {
     console.warn("[nestino-publish-webhook] stale timestamp", { timestampHeader });
-    return new NextResponse("Stale timestamp", { status: 401 });
+    return jsonError("stale_timestamp", "X-Publish-Timestamp is missing or outside allowed skew window", 401);
   }
 
   let parsedPayload: PublishPayload;
   try {
     parsedPayload = PublishPayloadSchema.parse(JSON.parse(rawBody));
   } catch {
-    return new NextResponse("Invalid payload", { status: 400 });
+    return jsonError("invalid_payload", "Body must be valid JSON matching the publish webhook schema", 400);
   }
 
   if (parsedPayload.siteId !== env.siteId) {
@@ -139,7 +148,16 @@ export async function POST(request: Request) {
       slug: parsedPayload.slug,
       siteId: parsedPayload.siteId,
     });
-    return new NextResponse("Forbidden site", { status: 403 });
+    return jsonError("forbidden_site", "payload.siteId does not match NESTINO_SITE_ID", 403);
+  }
+
+  if (process.env.NODE_ENV === "production" && !isPersistentStoreConfigured()) {
+    console.error("[nestino-publish-webhook] production requires Upstash Redis for publish store");
+    return jsonError(
+      "misconfigured",
+      "Production requires UPSTASH_REDIS_REST_URL and UPSTASH_REDIS_REST_TOKEN for publish persistence",
+      503
+    );
   }
 
   const dedupeKey = [
@@ -161,28 +179,51 @@ export async function POST(request: Request) {
   }
 
   const slug = normalizeSlug(parsedPayload.slug);
-  let contentFetchOk = false;
-  let upserted = false;
-  let language: string | null = null;
 
-  try {
-    const record = await fetchPublishedByPageId(env.apiBaseUrl, parsedPayload.pageId);
-    if (record && record.siteId === env.siteId) {
-      await upsertPublishedRecord(record);
-      language = record.language;
-      contentFetchOk = true;
-      upserted = true;
-    } else if (record && record.siteId !== env.siteId) {
-      console.warn("[nestino-publish-webhook] fetched content site mismatch", {
-        expectedSiteId: env.siteId,
-        fetchedSiteId: record.siteId,
-        pageId: parsedPayload.pageId,
-      });
-    }
-  } catch {
-    contentFetchOk = false;
+  const record = await fetchPublishedPageRecord(env.apiBaseUrl, parsedPayload.pageId);
+
+  if (!record) {
+    console.error("[nestino-publish-webhook] upstream content fetch failed", {
+      pageId: parsedPayload.pageId,
+    });
+    revalidateForSlug(slug, null);
+    return jsonError(
+      "upstream_content_failed",
+      "Could not load published content from Nestino GET /api/v1/content or /api/v1/pages",
+      502
+    );
   }
 
+  if (record.siteId !== env.siteId) {
+    console.warn("[nestino-publish-webhook] fetched content site mismatch", {
+      expectedSiteId: env.siteId,
+      fetchedSiteId: record.siteId,
+      pageId: parsedPayload.pageId,
+    });
+    revalidateForSlug(slug, null);
+    return jsonError(
+      "content_site_mismatch",
+      "Fetched content siteId does not match NESTINO_SITE_ID",
+      502
+    );
+  }
+
+  try {
+    await upsertPublishedRecord(record);
+  } catch (err) {
+    const msg = err instanceof Error ? err.message : String(err);
+    if (msg === "PERSISTENT_STORE_REQUIRED") {
+      return jsonError(
+        "misconfigured",
+        "Persistent store required for publish upsert (configure Upstash Redis)",
+        503
+      );
+    }
+    console.error("[nestino-publish-webhook] upsert failed", err);
+    return jsonError("upsert_failed", "Could not persist published content", 500);
+  }
+
+  const language = record.language;
   revalidateForSlug(slug, language);
 
   console.info("[nestino-publish-webhook] processed", {
@@ -190,8 +231,7 @@ export async function POST(request: Request) {
     pageId: parsedPayload.pageId,
     slug,
     language,
-    contentFetchOk,
-    upserted,
+    publishedAt: record.publishedAt,
     result: "ok",
   });
 
@@ -201,7 +241,8 @@ export async function POST(request: Request) {
     pageId: parsedPayload.pageId,
     slug,
     language,
-    contentFetchOk,
-    upserted,
+    publishedAt: record.publishedAt,
+    upserted: true,
+    contentFetchOk: true,
   });
 }
