@@ -11,22 +11,21 @@
 
 | Variable | Required |
 |----------|----------|
-| `NESTINO_API_BASE_URL` | Yes (server-side fetch for webhook + on-demand CMS routes) |
+| `NESTINO_API_BASE_URL` | Yes (server-side fetch for CMS routes) |
 | `NESTINO_SITE_ID` | Yes |
 | `NESTINO_PUBLISH_SECRET` | Yes |
-| `UPSTASH_REDIS_REST_URL` / `UPSTASH_REDIS_REST_TOKEN` | **Yes in production** (publish store + idempotency) |
+| `UPSTASH_REDIS_REST_URL` / `UPSTASH_REDIS_REST_TOKEN` | Optional (not used for publish path; reserved for rate limiting / future use) |
 | `DATABASE_URL` | Recommended on Vercel so `Host` resolves the correct site via `sites.custom_domain` (e.g. `www.villasilyan.com`). If unset, the CMS route can still use `NESTINO_SITE_ID` alone for this single-tenant deploy. |
 
-Errors are JSON: `{ "error": { "code", "message" } }` with `503` for misconfiguration, `401` for auth/timestamp, `403` for wrong site, `502` when Nestino content APIs fail.
+Errors are JSON: `{ "error": { "code", "message" } }` with `503` for misconfiguration, `401` for auth/timestamp, `403` for wrong site.
 
 ## After webhook
 
-Server loads canonical content via:
+The webhook **only revalidates** Next.js cache (`/{lang}/{slug}`, tag `content`). Published HTML is **not** stored in Redis.
 
-1. `GET {NESTINO_API_BASE_URL}/api/v1/content/{pageId}`
-2. If needed, `GET {NESTINO_API_BASE_URL}/api/v1/pages/{pageId}`
+Public pages load content on each request (with `revalidate = 60`) via:
 
-Then upserts Redis (or in-memory in **non-production** only) and revalidates `/{lang}/{slug}` and tag `content`.
+`GET {NESTINO_API_BASE_URL}/api/v1/pages?slug=…&siteId=…&language=…`
 
 ## Public URLs
 
@@ -37,7 +36,7 @@ Tenant resolution uses **`resolveSiteContext(Host, x-nestino-slug)`** so custom 
 ## Quick checks
 
 1. `POST` webhook with empty body and no valid signature → **401** JSON.
-2. Valid signature + env → **200** and `upserted: true` when Nestino returns parseable content.
-3. `GET /en/<slug>` → **200** after a successful publish (store hit).
+2. Valid signature + env → **200** and `revalidated: true`.
+3. `GET /en/<slug>` → **200** when Nestino pages API returns the slug for `NESTINO_SITE_ID`.
 
 Nestino must set `publishWebhookUrl`, `publishWebhookSecret`, and optionally `autoPublish` on the site (see product checklist).

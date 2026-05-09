@@ -1,5 +1,3 @@
-import { Redis } from "@upstash/redis";
-
 export type SupportedPublishedLang = "en" | "ar";
 
 export type PublishedContentRecord = {
@@ -17,36 +15,7 @@ export type PublishedContentRecord = {
   updatedAt: number;
 };
 
-const RECORD_TTL_SECONDS = 7 * 24 * 60 * 60;
-const INDEX_TTL_SECONDS = 30 * 24 * 60 * 60;
-
-let redisClient: Redis | null | undefined;
-const memoryStore = new Map<string, string>();
-
-export function isPersistentStoreConfigured(): boolean {
-  return Boolean(
-    process.env.UPSTASH_REDIS_REST_URL?.trim() && process.env.UPSTASH_REDIS_REST_TOKEN?.trim()
-  );
-}
-
-/** Production deployments must use Upstash so publish survives cold starts. */
-export function assertPersistentStoreForProduction(): void {
-  if (process.env.NODE_ENV === "production" && !isPersistentStoreConfigured()) {
-    throw new Error("PERSISTENT_STORE_REQUIRED");
-  }
-}
-
-function getRedisClient(): Redis | null {
-  if (redisClient !== undefined) return redisClient;
-  const url = process.env.UPSTASH_REDIS_REST_URL;
-  const token = process.env.UPSTASH_REDIS_REST_TOKEN;
-  if (!url || !token) {
-    redisClient = null;
-    return redisClient;
-  }
-  redisClient = new Redis({ url, token });
-  return redisClient;
-}
+const DEV_FALLBACK_SITE_ID = "00000000-0000-0000-0000-000000000001";
 
 export function normalizeSlug(rawSlug: string): string {
   const cleaned = rawSlug.trim().replace(/^\/+/, "").replace(/\/+$/, "");
@@ -63,18 +32,6 @@ export function mapBackendLanguage(raw: unknown): SupportedPublishedLang | null 
   if (value === "EN-US" || value === "EN-GB") return "en";
   if (value === "AR-SA" || value === "AR-AE") return "ar";
   return null;
-}
-
-function contentKey(siteId: string, language: SupportedPublishedLang, slug: string): string {
-  return `nestino:published:${siteId}:${language}:${slug}`;
-}
-
-function pageIndexKey(siteId: string, pageId: string): string {
-  return `nestino:published:page-index:${siteId}:${pageId}`;
-}
-
-function isSupportedLang(value: string): value is SupportedPublishedLang {
-  return value === "en" || value === "ar";
 }
 
 function parsePublishedAt(raw: unknown): string | null {
@@ -234,47 +191,7 @@ export function extractRecord(raw: unknown, fallbackPageId?: string): PublishedC
   };
 }
 
-export async function upsertPublishedRecord(record: PublishedContentRecord): Promise<void> {
-  assertPersistentStoreForProduction();
-
-  const key = contentKey(record.siteId, record.language, record.slug);
-  const indexKey = pageIndexKey(record.siteId, record.pageId);
-  const payload = JSON.stringify(record);
-  const redis = getRedisClient();
-
-  if (redis) {
-    await Promise.all([
-      redis.set(key, payload, { ex: RECORD_TTL_SECONDS }),
-      redis.set(indexKey, `${record.language}:${record.slug}`, { ex: INDEX_TTL_SECONDS }),
-    ]);
-    return;
-  }
-
-  memoryStore.set(key, payload);
-  memoryStore.set(indexKey, `${record.language}:${record.slug}`);
-}
-
-export async function getPublishedRecordBySlug(
-  siteId: string,
-  language: SupportedPublishedLang,
-  slug: string
-): Promise<PublishedContentRecord | null> {
-  const key = contentKey(siteId, language, normalizeSlug(slug));
-  const redis = getRedisClient();
-  const raw = redis ? await redis.get<string>(key) : memoryStore.get(key);
-  if (!raw || typeof raw !== "string") return null;
-  try {
-    const parsed = JSON.parse(raw) as PublishedContentRecord;
-    if (!isSupportedLang(parsed.language)) return null;
-    return parsed;
-  } catch {
-    return null;
-  }
-}
-
-const DEV_FALLBACK_SITE_ID = "00000000-0000-0000-0000-000000000001";
-
-/** Map offline dev tenant id to configured Nestino site so Redis keys match webhook upserts. */
+/** Map offline dev tenant id to configured Nestino site so lookups match production siteId. */
 export function effectiveSiteIdForPublishedContent(ctxSiteId: string): string {
   const envId = process.env.NESTINO_SITE_ID?.trim();
   if (envId && ctxSiteId === DEV_FALLBACK_SITE_ID) return envId;
@@ -303,40 +220,8 @@ async function fetchJson(url: string): Promise<unknown | null> {
   }
 }
 
-/** Canonical: GET /api/v1/content/:pageId */
-export async function fetchPublishedByContentEndpoint(
-  apiBaseUrl: string,
-  pageId: string
-): Promise<PublishedContentRecord | null> {
-  const payload = await fetchJson(`${apiBaseUrl}/api/v1/content/${pageId}`);
-  return extractRecord(payload, pageId);
-}
-
-/** Fallback: GET /api/v1/pages/:pageId */
-export async function fetchPublishedByPagesEndpoint(
-  apiBaseUrl: string,
-  pageId: string
-): Promise<PublishedContentRecord | null> {
-  const payload = await fetchJson(`${apiBaseUrl}/api/v1/pages/${pageId}`);
-  return extractRecord(payload, pageId);
-}
-
 /**
- * Tries Nestino content API first, then pages API (checklist contract).
- * Does not use unverified slug query parameters.
- */
-export async function fetchPublishedPageRecord(
-  apiBaseUrl: string,
-  pageId: string
-): Promise<PublishedContentRecord | null> {
-  const fromContent = await fetchPublishedByContentEndpoint(apiBaseUrl, pageId);
-  if (fromContent) return fromContent;
-  return fetchPublishedByPagesEndpoint(apiBaseUrl, pageId);
-}
-
-/**
- * Self-healing fallback for public routes when the publish webhook/store missed an event.
- * Nestino currently supports slug lookup on /api/v1/pages.
+ * Public CMS route: load published page by slug via Nestino GET /api/v1/pages (no local persistence).
  */
 export async function fetchPublishedBySlug(
   apiBaseUrl: string,

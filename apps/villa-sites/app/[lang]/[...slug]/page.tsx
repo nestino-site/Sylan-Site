@@ -7,9 +7,7 @@ import { resolveSiteContext } from "@nestino/villa-site/lib/tenant";
 import {
   effectiveSiteIdForPublishedContent,
   fetchPublishedBySlug,
-  getPublishedRecordBySlug,
   normalizeSlug,
-  upsertPublishedRecord,
   type SupportedPublishedLang,
 } from "@/lib/nestino-published-content";
 
@@ -72,30 +70,17 @@ async function resolveContext(props: Props) {
   };
 }
 
-/** Published pages are loaded from the store populated by the Nestino webhook (no unverified slug-query APIs). */
+/** Published pages load from Nestino on each render; the publish webhook only revalidates ISR cache. */
 const loadPublishedRecord = cache(async function loadPublishedRecord(
   siteId: string,
   lang: SupportedPublishedLang,
   slug: string
 ) {
-  const stored = await getPublishedRecordBySlug(siteId, lang, slug);
-  if (stored) return stored;
-
   const baseUrl = process.env.NESTINO_API_BASE_URL?.replace(/\/$/, "");
   if (!baseUrl) return null;
 
   const fromBackend = await fetchPublishedBySlug(baseUrl, siteId, slug, lang);
   if (!fromBackend || fromBackend.siteId !== siteId) return null;
-
-  // The route can still render when persistence is unavailable; caching is best effort here.
-  await upsertPublishedRecord(fromBackend).catch((err) => {
-    console.warn("[nestino-published-page] cache upsert failed", {
-      siteId,
-      lang,
-      slug,
-      error: err instanceof Error ? err.message : String(err),
-    });
-  });
 
   return fromBackend;
 });
