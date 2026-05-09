@@ -7,6 +7,7 @@ import { resolveSiteContext } from "@nestino/villa-site/lib/tenant";
 import {
   effectiveSiteIdForPublishedContent,
   fetchPublishedBySlug,
+  isPublishedPageStatus,
   normalizeSlug,
   type SupportedPublishedLang,
 } from "@/lib/nestino-published-content";
@@ -60,13 +61,16 @@ async function resolveContext(props: Props) {
   const ctx = await resolveSiteContext(host, headerSlug);
 
   const envSiteId = process.env.NESTINO_SITE_ID?.trim();
-  const siteIdFromCtx = ctx ? effectiveSiteIdForPublishedContent(ctx.site.id) : envSiteId ?? null;
-  if (!siteIdFromCtx) return null;
+  /** Prefer env site id for Nestino API (must match CMS); DB tenant id can diverge in misconfigured deploys. */
+  const siteIdForNestino =
+    envSiteId ??
+    (ctx ? effectiveSiteIdForPublishedContent(ctx.site.id) : null);
+  if (!siteIdForNestino) return null;
 
   return {
     safeLang,
     slugValue,
-    siteId: siteIdFromCtx,
+    siteId: siteIdForNestino,
   };
 }
 
@@ -106,7 +110,7 @@ export default async function Page(props: Props) {
   if (!resolved) notFound();
 
   const record = await loadPublishedRecord(resolved.siteId, resolved.safeLang, resolved.slugValue);
-  if (!record || record.status.toLowerCase() !== "published") notFound();
+  if (!record || !isPublishedPageStatus(record.status)) notFound();
 
   const safeHtml = sanitizeHtml(record.finalContent, SANITIZE_OPTS);
 

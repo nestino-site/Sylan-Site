@@ -25,6 +25,12 @@ export function normalizeSlug(rawSlug: string): string {
   return cleaned;
 }
 
+/** Accept common Nestino/backend status values for publicly rendered pages. */
+export function isPublishedPageStatus(status: string): boolean {
+  const s = status.trim().toLowerCase();
+  return s === "published" || s === "live" || s === "active";
+}
+
 export function mapBackendLanguage(raw: unknown): SupportedPublishedLang | null {
   const value = String(raw ?? "").trim().toUpperCase();
   if (value === "EN") return "en";
@@ -85,7 +91,22 @@ export function extractRecord(raw: unknown, fallbackPageId?: string): PublishedC
   const obj = raw && typeof raw === "object" ? (raw as Record<string, unknown>) : null;
   if (!obj) return null;
 
-  const wrapped = (obj.data && typeof obj.data === "object" ? obj.data : obj) as Record<string, unknown>;
+  // Common list envelopes: { data: [...] }, { pages: [...] } — must unwrap before treating data as a single record.
+  for (const key of ["data", "pages", "results", "items"] as const) {
+    const arr = obj[key];
+    if (Array.isArray(arr)) {
+      for (const item of arr) {
+        const record = extractRecord(item, fallbackPageId);
+        if (record) return record;
+      }
+    }
+  }
+
+  const wrappedFromData =
+    obj.data !== undefined && typeof obj.data === "object" && !Array.isArray(obj.data)
+      ? (obj.data as Record<string, unknown>)
+      : obj;
+  const wrapped = wrappedFromData as Record<string, unknown>;
   const root =
     wrapped.page && typeof wrapped.page === "object"
       ? (wrapped.page as Record<string, unknown>)
