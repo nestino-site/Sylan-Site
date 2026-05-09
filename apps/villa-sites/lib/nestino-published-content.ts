@@ -117,6 +117,14 @@ function fallbackFinalContent(value: unknown): string {
  * Maps Nestino GET /api/v1/content/:pageId or GET /api/v1/pages/:pageId responses into a store record.
  */
 export function extractRecord(raw: unknown, fallbackPageId?: string): PublishedContentRecord | null {
+  if (Array.isArray(raw)) {
+    for (const item of raw) {
+      const record = extractRecord(item, fallbackPageId);
+      if (record) return record;
+    }
+    return null;
+  }
+
   const obj = raw && typeof raw === "object" ? (raw as Record<string, unknown>) : null;
   if (!obj) return null;
 
@@ -324,4 +332,31 @@ export async function fetchPublishedPageRecord(
   const fromContent = await fetchPublishedByContentEndpoint(apiBaseUrl, pageId);
   if (fromContent) return fromContent;
   return fetchPublishedByPagesEndpoint(apiBaseUrl, pageId);
+}
+
+/**
+ * Self-healing fallback for public routes when the publish webhook/store missed an event.
+ * Nestino currently supports slug lookup on /api/v1/pages.
+ */
+export async function fetchPublishedBySlug(
+  apiBaseUrl: string,
+  siteId: string,
+  slug: string,
+  language: SupportedPublishedLang
+): Promise<PublishedContentRecord | null> {
+  const normalized = normalizeSlug(slug);
+  const upper = language.toUpperCase();
+  const params = new URLSearchParams({
+    slug: normalized,
+    siteId,
+    language: upper,
+  });
+
+  const withoutSlash = await fetchJson(`${apiBaseUrl}/api/v1/pages?${params.toString()}`);
+  const first = extractRecord(withoutSlash);
+  if (first) return first;
+
+  params.set("slug", `/${normalized}`);
+  const withSlash = await fetchJson(`${apiBaseUrl}/api/v1/pages?${params.toString()}`);
+  return extractRecord(withSlash);
 }
