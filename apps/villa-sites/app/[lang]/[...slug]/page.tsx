@@ -3,7 +3,7 @@ import { cache } from "react";
 import sanitizeHtml from "sanitize-html";
 import { headers } from "next/headers";
 import { notFound } from "next/navigation";
-import { getSiteBySubdomain } from "@nestino/villa-site/lib/tenant";
+import { resolveSiteContext } from "@nestino/villa-site/lib/tenant";
 import {
   effectiveSiteIdForPublishedContent,
   fetchPublishedBySlug,
@@ -57,14 +57,18 @@ async function resolveContext(props: Props) {
   if (!slugValue) return null;
 
   const h = await headers();
-  const siteSlug = h.get("x-nestino-slug") ?? "";
-  const ctx = siteSlug ? await getSiteBySubdomain(siteSlug) : null;
-  if (!ctx) return null;
+  const host = h.get("host") ?? "";
+  const headerSlug = h.get("x-nestino-slug");
+  const ctx = await resolveSiteContext(host, headerSlug);
+
+  const envSiteId = process.env.NESTINO_SITE_ID?.trim();
+  const siteIdFromCtx = ctx ? effectiveSiteIdForPublishedContent(ctx.site.id) : envSiteId ?? null;
+  if (!siteIdFromCtx) return null;
 
   return {
     safeLang,
     slugValue,
-    siteId: effectiveSiteIdForPublishedContent(ctx.site.id),
+    siteId: siteIdFromCtx,
   };
 }
 
