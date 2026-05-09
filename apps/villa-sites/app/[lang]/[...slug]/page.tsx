@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { cache } from "react";
-import sanitizeHtml from "sanitize-html";
 import { headers } from "next/headers";
 import { notFound } from "next/navigation";
 import { resolveSiteContext } from "@nestino/villa-site/lib/tenant";
@@ -11,32 +10,10 @@ import {
   normalizeSlug,
   type SupportedPublishedLang,
 } from "@/lib/nestino-published-content";
+import { buildContentExcerpt, renderPublishedMarkdown } from "@/lib/markdown-content";
 
 export const revalidate = 60;
 export const runtime = "nodejs";
-
-/** Safe subset for Nestino-provided HTML (defense in depth). */
-const SANITIZE_OPTS: sanitizeHtml.IOptions = {
-  allowedTags: sanitizeHtml.defaults.allowedTags.concat([
-    "img",
-    "h1",
-    "h2",
-    "h3",
-    "h4",
-    "figure",
-    "figcaption",
-    "article",
-    "section",
-  ]),
-  allowedAttributes: {
-    ...sanitizeHtml.defaults.allowedAttributes,
-    img: ["src", "alt", "width", "height", "loading", "class"],
-    a: ["href", "name", "target", "rel", "class"],
-    p: ["class"],
-    div: ["class"],
-    span: ["class"],
-  },
-};
 
 type Props = {
   params: Promise<{ lang: string; slug: string[] }>;
@@ -57,6 +34,7 @@ async function resolveContext(props: Props) {
 
   const h = await headers();
   const host = h.get("host") ?? "";
+  const proto = h.get("x-forwarded-proto") ?? (host.startsWith("localhost") ? "http" : "https");
   const headerSlug = h.get("x-nestino-slug");
   const ctx = await resolveSiteContext(host, headerSlug);
 
@@ -71,6 +49,7 @@ async function resolveContext(props: Props) {
     safeLang,
     slugValue,
     siteId: siteIdForNestino,
+    origin: host ? `${proto}://${host}` : "https://www.villasilyan.com",
   };
 }
 
@@ -97,12 +76,34 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   if (!record) return { robots: { index: false, follow: false } };
 
   const canonical = `/${resolved.safeLang}/${resolved.slugValue}`;
+  const canonicalUrl = `${resolved.origin}${canonical}`;
+  const description = record.metaDescription ?? buildContentExcerpt(record.finalContent);
+  const title = record.metaTitle ?? record.title;
   return {
-    title: record.metaTitle ?? record.title,
-    description: record.metaDescription ?? undefined,
+    title,
+    description,
     alternates: { canonical },
+    openGraph: {
+      type: "article",
+      title,
+      description,
+      url: canonicalUrl,
+      siteName: "Villa Silyan",
+      locale: resolved.safeLang === "ar" ? "ar_AR" : "en_US",
+      publishedTime: record.publishedAt ?? undefined,
+      modifiedTime: new Date(record.updatedAt).toISOString(),
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+    },
     robots: { index: true, follow: true },
   };
+}
+
+function jsonLd(value: unknown): string {
+  return JSON.stringify(value).replace(/</g, "\\u003c");
 }
 
 export default async function Page(props: Props) {
@@ -112,17 +113,63 @@ export default async function Page(props: Props) {
   const record = await loadPublishedRecord(resolved.siteId, resolved.safeLang, resolved.slugValue);
   if (!record || !isPublishedPageStatus(record.status)) notFound();
 
-  const safeHtml = sanitizeHtml(record.finalContent, SANITIZE_OPTS);
+  const safeHtml = renderPublishedMarkdown(record.finalContent);
+  const description = record.metaDescription ?? buildContentExcerpt(record.finalContent);
+  const canonicalPath = `/${resolved.safeLang}/${resolved.slugValue}`;
+  const canonicalUrl = `${resolved.origin}${canonicalPath}`;
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: record.title,
+    description,
+    inLanguage: resolved.safeLang,
+    datePublished: record.publishedAt ?? undefined,
+    dateModified: new Date(record.updatedAt).toISOString(),
+    mainEntityOfPage: canonicalUrl,
+    publisher: {
+      "@type": "Organization",
+      name: "Villa Silyan",
+      url: resolved.origin,
+    },
+  };
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: `${resolved.origin}/${resolved.safeLang}`,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: record.title,
+        item: canonicalUrl,
+      },
+    ],
+  };
 
   return (
-    <main className="pt-24 pb-16 section-y">
-      <article className="content-wrapper max-w-3xl">
-        <header className="mb-8">
+    <main className="pt-24 pb-16 cms-page">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: jsonLd(articleJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: jsonLd(breadcrumbJsonLd) }}
+      />
+      <article className="content-wrapper cms-article">
+        <header className="cms-hero">
+          <p className="cms-kicker">Villa Silyan Guide</p>
           <h1 className="font-serif font-semibold text-h1 text-[var(--color-text-primary)]">
             {record.title}
           </h1>
+          {description && <p className="cms-description">{description}</p>}
           {record.publishedAt && (
-            <p className="text-sm text-[var(--color-text-muted)] mt-2">
+            <p className="cms-date">
               <time dateTime={record.publishedAt}>
                 {new Intl.DateTimeFormat(resolved.safeLang, {
                   year: "numeric",

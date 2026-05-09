@@ -177,3 +177,172 @@
   background-color: color-mix(in srgb, var(--color-text-muted) 50%, transparent);
   border-radius: var(--radius-full);
 }
+
+/* Published CMS pages */
+.cms-page {
+  background:
+    radial-gradient(circle at 12% 0%, color-mix(in srgb, var(--accent-500) 10%, transparent), transparent 32rem),
+    linear-gradient(180deg, color-mix(in srgb, var(--color-surface) 80%, transparent), var(--color-bg) 38rem);
+}
+
+.cms-article {
+  max-width: 920px;
+}
+
+.cms-hero {
+  margin-bottom: var(--space-8);
+  padding: var(--space-6);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: color-mix(in srgb, var(--color-surface) 94%, transparent);
+  box-shadow: 0 24px 70px color-mix(in srgb, #000 8%, transparent);
+}
+
+.cms-kicker {
+  margin-bottom: var(--space-3);
+  color: var(--accent-600);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.cms-description {
+  max-width: 760px;
+  margin-top: var(--space-4);
+  color: var(--color-text-secondary);
+  font-size: clamp(1.05rem, 1vw + 0.85rem, 1.25rem);
+  line-height: 1.75;
+}
+
+.cms-date {
+  margin-top: var(--space-4);
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+.prose-villa {
+  color: var(--color-text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.85;
+}
+
+.prose-villa > * + * {
+  margin-top: 1.15em;
+}
+
+.prose-villa h2,
+.prose-villa h3,
+.prose-villa h4 {
+  color: var(--color-text-primary);
+  font-family: var(--font-fraunces), ui-serif, Georgia, serif;
+  font-weight: 650;
+  line-height: 1.18;
+  scroll-margin-top: 6rem;
+}
+
+.prose-villa h2 {
+  margin-top: 2.2em;
+  font-size: clamp(1.7rem, 2vw + 1rem, 2.45rem);
+}
+
+.prose-villa h3 {
+  margin-top: 1.8em;
+  font-size: clamp(1.35rem, 1.2vw + 1rem, 1.8rem);
+}
+
+.prose-villa h4 {
+  margin-top: 1.5em;
+  font-size: 1.2rem;
+}
+
+.prose-villa p {
+  margin: 0;
+}
+
+.prose-villa a {
+  color: var(--accent-600);
+  font-weight: 650;
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--accent-500) 40%, transparent);
+  text-underline-offset: 0.22em;
+}
+
+.prose-villa ul,
+.prose-villa ol {
+  padding-inline-start: 1.35em;
+}
+
+.prose-villa li + li {
+  margin-top: 0.45em;
+}
+
+.prose-villa strong {
+  color: var(--color-text-primary);
+  font-weight: 700;
+}
+
+.prose-villa blockquote {
+  margin-inline: 0;
+  padding: var(--space-4) var(--space-5);
+  border-inline-start: 4px solid var(--accent-500);
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--accent-500) 8%, var(--color-surface));
+  color: var(--color-text-primary);
+  font-weight: 550;
+}
+
+.prose-villa hr {
+  margin: var(--space-8) 0;
+  border: 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.prose-villa table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+}
+
+.prose-villa thead {
+  background: color-mix(in srgb, var(--accent-500) 10%, var(--color-surface));
+}
+
+.prose-villa th,
+.prose-villa td {
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid var(--color-border);
+  text-align: start;
+  vertical-align: top;
+}
+
+.prose-villa th {
+  color: var(--color-text-primary);
+  font-weight: 700;
+}
+
+.prose-villa tr:last-child td {
+  border-bottom: 0;
+}
+
+.prose-villa code {
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--color-text-primary) 8%, transparent);
+  padding: 0.1rem 0.32rem;
+  color: var(--color-text-primary);
+  font-size: 0.92em;
+}
+
+@media (max-width: 767px) {
+  .cms-hero {
+    padding: var(--space-5);
+  }
+
+  .prose-villa {
+    font-size: 1rem;
+  }
+}
