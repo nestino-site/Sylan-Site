@@ -1,159 +1,157 @@
-# Nestino Landing — Product Requirements (PRD)
+# Nestino Enterprise Website - Product Requirements
 
 ## Goal
 
-Convert **skeptical villa owners** into **activated 30-day trials** with minimal friction, while clearly communicating the differentiated offer: **pre-built site + autonomous growth engine**.
+Present Nestino as the premium enterprise hospitality operating system for independent luxury hotels and hospitality networks. The website must explain the product visually, establish trust with hotel groups, partners, investors, and strategic operators, and convert high-intent visitors into enterprise conversations.
 
-## Primary user
+This is no longer a narrow trial landing page. It is the corporate website for the long-term Nestino platform.
 
-- Independent villa / boutique stay owner or decision-maker  
-- Often **OTA-dependent**, weak digital presence  
-- May arrive from cold outreach, referral, or paid channel  
-- **English-first** at MVP; optional `id-ID` later (see [tech-spec.md](./tech-spec.md))
+## Product Core
 
-## In scope (MVP pages)
+Nestino is the operating layer for connected hospitality. It brings together property operations, guest identity, direct demand, lifestyle partners, executive intelligence, and enterprise APIs so independent premium properties can operate as a connected network without losing their individuality.
+
+The site must communicate these core solutions:
+
+- **Enterprise Hospitality Operating System:** One orchestration layer for operations, revenue, guest data, demand, analytics, and APIs.
+- **Property OS:** PMS, housekeeping, POS, maintenance, CRM, booking engine, revenue management, payments, inventory, and AI in a unified operational model.
+- **Guest Identity Platform:** One guest profile enriched across stays, dining, wellness, retail, events, and partner experiences.
+- **Curina Lifestyle Network:** A connected network of hotels, restaurants, cafes, gyms, wellness centers, cultural venues, coworking spaces, tourism providers, and lifestyle brands.
+- **Autonomous Demand Engine:** The existing Nestino growth-engine core: SEO discovery, on-site optimization, AI/GEO discovery, off-site mention generation, and multilingual demand growth.
+- **Executive Intelligence:** Revenue, occupancy, RevPAR, guest lifetime value, direct booking growth, cross-property behavior, and network-level insights.
+- **Enterprise Technology Layer:** APIs, data layer, AI engine, analytics, security, identity, and integration architecture.
+- **Network Effect:** More hotels create more guest signals, better AI, stronger personalization, more direct bookings, higher revenue, and stronger partner participation.
+
+## Primary Audiences
+
+- Independent luxury hotel owners and executive teams
+- Boutique hotel groups and hospitality operators
+- Restaurants, cafes, gyms, wellness centers, tourism providers, and lifestyle partners
+- Strategic investors and ecosystem partners
+- Future enterprise buyers evaluating platform credibility
+
+## Sitemap
 
 | Route | Purpose |
 |-------|---------|
-| `/` | Primary landing: value prop, offer, proof, FAQ, CTA |
-| `/demo/[slug]` | Live preview of prospect’s pre-built demo site (iframe or embed) |
-| `/privacy` | Privacy policy |
-| `/terms` | Terms of service |
+| `/` | Cinematic corporate home explaining the full Nestino ecosystem |
+| `/platform` | Unified platform overview and operating-system model |
+| `/property-os` | Property operations, modules, and hotel team workflows |
+| `/guest-identity` | Cross-property identity, enrichment, personalization, and consent-aware intelligence |
+| `/curina-lifestyle-network` | Lifestyle ecosystem, partner network, offers, points, and recommendations |
+| `/enterprise-analytics` | Executive dashboard, KPIs, revenue visibility, and multi-property intelligence |
+| `/technology` | Architecture, APIs, AI engine, data layer, security, and extensibility |
+| `/partners` | Partner value propositions for hotels and lifestyle businesses |
+| `/pricing` | Enterprise packaging, implementation model, and sales CTA |
+| `/about` | Mission, vision, and the connected hospitality network story |
+| `/contact` | Enterprise inquiry, partner inquiry, and strategic contact paths |
 
-## User stories & acceptance criteria
+## User Stories And Acceptance Criteria
 
-### US1 — Hero clarity
+### US1 - Understand Nestino Quickly
 
-**As** an owner, **I want** to understand what Nestino is in under 5 seconds **so that** I don’t bounce.
-
-**AC**
-
-- Above the fold: headline, subhead, **one primary CTA** (Start free month / See your demo).  
-- LCP element is optimized (hero text + light visual, not a 5MB video).  
-- Mobile: CTA visible without scroll on common viewports (375–430px height).
-
----
-
-### US2 — Before / after credibility
-
-**As** an owner, **I want** to see a clear before/after **so that** I believe the upgrade is real.
+**As** an executive visitor, **I want** to understand what Nestino is in under 5 seconds **so that** I immediately see it is a serious hospitality platform.
 
 **AC**
 
-- Section shows **old site thumbnail** (or placeholder) vs **Nestino demo** screenshot.  
-- Captions explain **3 concrete improvements** (speed, structure, discovery).  
-- If personalized demo exists, CTA deep-links to `/demo/[slug]`.
+- Hero states the operating-system positioning clearly.
+- Visual system shows hotels, guests, data, partners, and intelligence connecting.
+- Primary CTA leads to enterprise contact.
+- Above-fold experience is fast and not dependent on heavy video.
 
----
+### US2 - See The Fragmentation Problem
 
-### US3 — Offer comprehension
-
-**As** an owner, **I want** to understand pricing and trial **so that** I know risk/reward.
-
-**AC**
-
-- States **$349/mo** after trial and **first month free** (aligned with [strategy.md](../../strategy.md)).  
-- Bullets: edits included during trial, growth work during trial, opt-out at end.  
-- No hidden fee language; link to terms.
-
----
-
-### US4 — Proof of movement
-
-**As** an owner, **I want** credible proof **so that** I trust outcomes.
+**As** a hotel operator, **I want** to see the cost of disconnected systems **so that** the Nestino value proposition feels obvious.
 
 **AC**
 
-- At least **one** of: metric snapshot (anonymized), testimonial quote, logo row, or “typical 30-day outcomes” list.  
-- No fabricated numbers; label as **example** if hypothetical.
+- Home page includes a visual fragmentation story: isolated hotels, duplicated guest data, OTA leakage, disconnected PMS/CRM/booking systems, and lost intelligence.
+- The section must explain through motion/diagram first, with concise copy second.
 
----
+### US3 - See The Connected Solution
 
-### US5 — How it works
-
-**As** an owner, **I want** a simple 3-step explanation **so that** I understand the process.
+**As** a decision-maker, **I want** to see how Nestino connects the ecosystem **so that** I understand the network advantage.
 
 **AC**
 
-- Exactly **3 steps**: e.g. Pre-build → Activate trial → Grow direct demand.  
-- Each step ≤ 20 words.  
-- Illustrations optional; not required for MVP.
+- Solution section connects hotels, guests, demand signals, and lifestyle partners into one network.
+- Guest identity and demand intelligence are clearly shown as compounding assets.
 
----
+### US4 - Understand Product Modules
 
-### US6 — Lead capture
-
-**As** an owner, **I want** to submit my details **so that** Nestino can activate me.
+**As** an operator, **I want** to understand the operating-system modules **so that** I can map Nestino to real hotel workflows.
 
 **AC**
 
-- Form fields: **name**, **email**, **property URL** (optional but recommended), **destination** (select), **WhatsApp** (optional E.164).  
-- Validation + accessible errors.  
-- Success state: confirmation + what happens next (check email / WhatsApp).  
-- Rate limiting on API route.
+- Property OS modules include PMS, housekeeping, POS, maintenance, CRM, booking engine, revenue management, payments, inventory, and AI.
+- Each module has a concise outcome and a visual state.
 
----
+### US5 - Understand Guest Identity
 
-### US7 — Demo preview
-
-**As** an owner, **I want** to open my demo site **so that** I see “it already exists.”
+**As** a hospitality leader, **I want** to understand cross-property guest intelligence **so that** I see how Nestino improves personalization and loyalty.
 
 **AC**
 
-- `/demo/[slug]` resolves `sites.subdomain` / tenant slug.  
-- If not found → friendly 404 with CTA back to `/`.  
-- Embedded demo uses **sandboxed iframe** where possible; “Claim this site” bar fixed on mobile.
+- Guest Identity page and home section show one guest profile enriching across hotels, restaurants, gyms, cafes, spa, events, retail, and airport lounge.
+- Site avoids privacy-invasive language and frames the profile as consent-aware intelligence.
 
----
+### US6 - Understand Curina
 
-### US8 — Pricing & FAQ
-
-**As** an owner, **I want** FAQ answers **so that** objections are handled.
+**As** a partner or hotel group, **I want** to understand Curina as a lifestyle network **so that** I see the broader ecosystem opportunity.
 
 **AC**
 
-- FAQ covers: what you get, what you don’t (no PMS), data ownership, cancel anytime, languages, AI search.  
-- FAQ uses `FAQPage` schema (see tech-spec).
+- Curina page presents lifestyle city/network storytelling.
+- Partner categories and partner outcomes are explicit.
+- Offers, points, recommendations, and profile enrichment are shown as connected flows.
 
----
+### US7 - Preserve The Growth Engine Core
 
-### US9 — Trust signals
-
-**As** an owner, **I want** signals of legitimacy **so that** I feel safe.
-
-**AC**
-
-- Footer: company identity, contact email, social optional.  
-- `Organization` schema present.
-
----
-
-### US10 — WhatsApp contact
-
-**As** an owner, **I want** one-tap WhatsApp **so that** I can talk to a human.
+**As** a visitor evaluating Nestino's differentiation, **I want** to understand the autonomous demand engine **so that** I see Nestino is more than a website or PMS.
 
 **AC**
 
-- WhatsApp link with prefilled message including **property name** if captured (query param).  
-- Click tracked as analytics event.
+- Site includes the loop from strategy: Crawl -> Diagnose -> Decide -> Execute -> Measure -> Iterate.
+- Site explains SEO discovery, on-site optimization, AI/GEO discovery, off-site mention generation, and multilingual demand growth.
 
----
+### US8 - Build Enterprise Trust
 
-## Non-goals (MVP)
+**As** an enterprise buyer or investor, **I want** to see credible technology and analytics depth **so that** I trust the company can scale.
 
-- Owner dashboard / login  
-- Blog / CMS on landing  
-- Booking engine or availability  
-- Self-serve site builder UI  
-- Payments on landing (Stripe may exist only in console flow)
+**AC**
 
-## Dependencies
+- Technology page includes architecture layers: cloud, API gateway, data layer, AI engine, analytics, security, identity, and integrations.
+- Analytics page includes custom dashboard concepts for revenue, occupancy, RevPAR, guest lifetime value, direct bookings, source mix, and cross-property movement.
+- Avoid fake logos, fabricated case studies, and unsupported claims.
 
-- [../00-system/api-contracts.md](../00-system/api-contracts.md) — `POST /api/trials/activate`  
-- [../../strategy.md](../../strategy.md) — messaging constraints
+### US9 - Convert High-Intent Visitors
 
-## Success metrics
+**As** a qualified visitor, **I want** a premium and simple contact path **so that** I can start a conversation without SaaS-style friction.
 
-- Landing → trial activation conversion rate  
-- Time to first demo view (`/demo/[slug]` sessions)  
-- Qualified lead volume (destinations with engine coverage)
+**AC**
+
+- Contact page supports enterprise, partner, and strategic inquiry paths.
+- Form is accessible, validated, and has a clear success state.
+- Pricing page leads to contact rather than checkout.
+
+## Non-Goals For This Website Pass
+
+- Do not build the actual PMS, booking engine, payment flow, or owner dashboard inside the corporate site.
+- Do not claim shipped functionality that is only a vision; use credible future-facing language where needed.
+- Do not convert the villa-sites app into the corporate website.
+- Do not add heavy WebGL/Spline dependencies unless performance remains healthy.
+
+## Success Metrics
+
+- Qualified enterprise and partner inquiries
+- Contact form completion rate
+- CTA click-through from home, platform, pricing, and partner pages
+- Time on product explanation sections
+- Scroll depth through home storytelling sections
+- Branded search and investor/partner trust signals
+
+## Related
+
+- [design-spec.md](./design-spec.md)
+- [tech-spec.md](./tech-spec.md)
+- [../00-system/architecture.md](../00-system/architecture.md)
+- [../../strategy.md](../../strategy.md)

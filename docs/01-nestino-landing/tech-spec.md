@@ -1,71 +1,127 @@
-# Nestino Landing — Technical Specification
+# Nestino Enterprise Website - Technical Specification
 
 ## Stack
 
-- **Next.js 15** App Router + **TypeScript** + **Tailwind CSS**  
-- **Vercel** hosting  
-- **Drizzle** + shared `packages/db` for DB access (server-only)
+- Next.js 15 App Router
+- React 19
+- TypeScript strict mode
+- Tailwind CSS
+- Framer Motion for client-side storytelling primitives
+- Vercel hosting
 
-## Data & APIs
+The corporate website lives in `apps/landing`. It is separate from `apps/villa-sites`, which remains the multi-tenant property/demo app.
 
-### Trial activation
+## App Structure
 
-- Route: `POST /api/trials/activate` — contract in [../00-system/api-contracts.md](../00-system/api-contracts.md).  
-- Implementation: server action or Route Handler; **Zod** validate body.  
-- **Rate limit:** per IP + per email hash (Upstash Redis or Vercel KV).  
-- **Transaction:** create `tenants`, `sites`, `trials`, default `site_languages`. Generate CMS API key; store **hash + prefix** on `sites` only (**no** `site_cms_credentials` from landing — no `CREDENTIALS_ENCRYPTION_KEY` on Vercel).  
-- After commit: enqueue `CrawlSiteJob` with **`cms_api_key_plaintext`** in the job payload (or equivalent secure handoff: e.g. Redis once + job id). The **engine** encrypts and writes `site_cms_credentials`, then redacts the plaintext from persisted job payload/logs. See [api-contracts C1](../00-system/api-contracts.md) side effects.
+```text
+apps/landing/
+  app/
+    page.tsx
+    platform/page.tsx
+    property-os/page.tsx
+    guest-identity/page.tsx
+    curina-lifestyle-network/page.tsx
+    enterprise-analytics/page.tsx
+    technology/page.tsx
+    partners/page.tsx
+    pricing/page.tsx
+    about/page.tsx
+    contact/page.tsx
+    api/contact/route.ts
+    robots.ts
+    sitemap.ts
+    globals.css
+    layout.tsx
+  components/
+  content/
+  lib/
+```
 
-### Demo page
+## Data And APIs
 
-- File: `app/demo/[slug]/page.tsx`  
-- Resolve slug → `sites.subdomain` join `tenants`  
-- Pass `demoUrl` to client iframe component  
-- `notFound()` if missing
+### Contact Inquiry
 
-### Lead-only form (optional path)
+- Route: `POST /api/contact`
+- Validate with Zod.
+- Fields: `name`, `email`, `company`, `inquiryType`, `message`, optional `website`, optional `role`, honeypot field.
+- Return typed JSON errors with stable `code` fields.
+- Do not log full PII payloads.
+- If `RESEND_API_KEY` and contact recipients are configured, send email via Resend.
+- If `CRM_WEBHOOK_URL` is configured, forward sanitized inquiry data to the webhook.
+- If neither integration is configured, return success for local/dev after validation so the UI can be tested.
 
-If MVP collects leads **without** full trial provisioning, still store `tenants` as `prospect` status — align with PRD (prefer full trial path).
+### Trial Activation
 
-## Forms & email
+The old `POST /api/trials/activate` flow remains a separate future path from the prior landing MVP. Do not implement trial provisioning in this enterprise website pass unless the product scope returns to the owner-trial funnel.
 
-- **Resend** transactional email to internal team + optional owner confirmation.  
-- Webhook to CRM (Slack, Airtable, HubSpot) via `CRM_WEBHOOK_URL` secret.
+## Content Model
+
+- Store website copy in TypeScript content modules under `apps/landing/content`.
+- Keep product pillars and navigation data structured so pages can share language consistently.
+- Avoid fabricated logos, metrics, and testimonials.
+
+## Motion And Client Boundaries
+
+- Server Components by default.
+- Client components only for animation, mobile menu, interactive diagrams, and contact form.
+- All motion components must honor `prefers-reduced-motion`.
+- Advanced WebGL/Spline/Three.js are deferred unless explicitly approved.
+
+## SEO And AI Discovery
+
+- Metadata API for every page.
+- `app/sitemap.ts` for all corporate routes.
+- `app/robots.ts` should allow standard crawlers and AI crawlers.
+- JSON-LD: `Organization`, `WebSite`, and page-specific structured data where appropriate.
+- Use clear entity language around Nestino, Curina, hospitality operating system, guest identity, and autonomous demand engine.
 
 ## Analytics
 
-- **Vercel Analytics** enabled  
-- **PostHog** client events (see design-spec event names)
-
-## SEO & AI discovery
-
-- Metadata API: title/description/OG image for `/`  
-- `app/robots.ts` allow AI crawlers (GPTBot, PerplexityBot, ClaudeBot, Google-Extended)  
-- JSON-LD: `Organization`, `WebSite`, `FAQPage` on `/`
-
-## Performance budgets
-
-- **LCP** < 2.5s on 4G Fast (Vercel Speed Insights)  
-- **CLS** < 0.1  
-- Image: `next/image`, priority only for above-fold hero
+- Vercel Analytics in the root layout.
+- Optional PostHog event helper for:
+  - `landing_view`
+  - `cta_click`
+  - `contact_submit`
+  - `partner_interest`
+  - `pricing_intent`
+  - `section_view`
+- Analytics must fail silently if PostHog is not configured.
 
 ## Security
 
-- CSP headers (strict enough for Vercel + PostHog)  
-- No secrets in client bundle  
-- Honeypot field on form
+- CSP headers in `next.config.ts` suitable for Vercel Analytics, optional PostHog, images, and contact submissions.
+- No secrets in client bundles.
+- Honeypot field on public contact form.
+- Use typed error responses.
+- Rate limiting can be added with Upstash Redis when production keys are available.
 
-## i18n (optional phase 1.1)
+## Performance Budgets
 
-- `en` default; `id` copy via `next-intl` if needed — out of MVP unless requested
+- LCP under 2.5s on fast 4G.
+- CLS under 0.1.
+- Avoid heavy hero video in the initial implementation.
+- Prefer CSS/SVG product visuals.
+- Lazy-load below-fold interactive diagrams where appropriate.
+- Use `next/image` for licensed imagery once available.
+
+## Accessibility
+
+- Semantic headings and landmarks.
+- Keyboard accessible nav and form controls.
+- Visible focus states.
+- WCAG 2.2 AA contrast target.
+- Reduced-motion fallbacks.
 
 ## Deployment
 
-- Production branch `main` → auto deploy  
-- Preview deployments for PRs
+- Root scripts:
+  - `pnpm dev:landing`
+  - `pnpm build:landing`
+  - `pnpm lint:landing`
+- Production deploys from the `apps/landing` Vercel project.
 
 ## Related
 
-- [PRD.md](./PRD.md)  
-- [design-spec.md](./design-spec.md)  
+- [PRD.md](./PRD.md)
+- [design-spec.md](./design-spec.md)
 - [../00-system/architecture.md](../00-system/architecture.md)

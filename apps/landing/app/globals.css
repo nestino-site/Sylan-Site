@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-ivory: #F8F6F1;
+    --color-sand: #EFE8DB;
+    --color-white: #FFFFFF;
+    --color-champagne: #C8A96A;
+    --color-olive: #4B5B4E;
+    --color-charcoal: #262626;
+    --color-stone: #787878;
+    --color-beige: #E8E2D7;
+    --shadow-soft: 0 24px 80px rgba(38, 38, 38, 0.08);
+    --radius-card: 28px;
+  }
+
+  html {
+    min-height: 100%;
+    scroll-behavior: smooth;
+    background: var(--color-ivory);
+    color: var(--color-charcoal);
+  }
+
+  body {
+    min-height: 100dvh;
+    background:
+      radial-gradient(circle at 50% -10%, rgba(200, 169, 106, 0.18), transparent 32rem),
+      linear-gradient(180deg, var(--color-ivory) 0%, #fbfaf6 100%);
+    color: var(--color-charcoal);
+    font-family: var(--font-sans), system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background: rgba(200, 169, 106, 0.28);
+    color: var(--color-charcoal);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-champagne);
+    outline-offset: 4px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      scroll-behavior: auto !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  .site-shell {
+    min-height: 100dvh;
+    overflow-x: clip;
+  }
+
+  .content-grid {
+    width: min(100% - 32px, 1440px);
+    margin-inline: auto;
+  }
+
+  @media (min-width: 768px) {
+    .content-grid {
+      width: min(100% - 64px, 1440px);
+    }
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+    color: var(--color-olive);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .eyebrow::before {
+    content: "";
+    width: 2rem;
+    height: 1px;
+    background: var(--color-champagne);
+  }
+
+  .luxury-card {
+    border: 1px solid rgba(232, 226, 215, 0.9);
+    border-radius: var(--radius-card);
+    background: rgba(255, 255, 255, 0.78);
+    box-shadow: var(--shadow-soft);
+    backdrop-filter: blur(18px);
+  }
+
+  .gold-line {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(200, 169, 106, 0.8), transparent);
+  }
+
+  .soft-grid {
+    background-image:
+      linear-gradient(rgba(75, 91, 78, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(75, 91, 78, 0.05) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+}
