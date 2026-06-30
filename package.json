@@ -3,13 +3,10 @@
   "private": true,
   "scripts": {
     "dev": "pnpm --filter @nestino/villa-sites dev",
-    "dev:landing": "pnpm --filter @nestino/landing dev",
     "dev:villa": "pnpm --filter @nestino/villa-sites dev",
     "build": "pnpm --filter @nestino/villa-sites build",
-    "build:landing": "pnpm --filter @nestino/landing build",
     "start": "pnpm --filter @nestino/villa-sites start",
     "lint": "pnpm --filter @nestino/villa-sites lint",
-    "lint:landing": "pnpm --filter @nestino/landing lint",
     "verify": "pnpm build && pnpm lint"
   },
   "packageManager": "pnpm@9.15.0",
